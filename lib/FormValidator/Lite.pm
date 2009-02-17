@@ -141,7 +141,7 @@ __END__
 
 =head1 NAME
 
-FormValidator::Lite -
+FormValidator::Lite - liteweight form validation library
 
 =head1 SYNOPSIS
 
@@ -174,13 +174,14 @@ FormValidator::Lite -
 
 =head1 DESCRIPTION
 
-FormValidator::Lite is
+FormValidator::Lite is simple, fast implementation for form validation.
 
 =head1 WHY NOT FormValidator::Simple?
 
-FormValidator::Simple is too heavy for me.
+Yes, I know. This module is very similar with FV::S.
 
-And, FormValidator::Lite is fast!
+But, FormValidator::Simple is too heavy for me.
+FormValidator::Lite is fast!
 
                             Rate FormValidator::Simple   FormValidator::Lite
     FormValidator::Simple  442/s                    --                  -73%

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 11;
+use Test::More tests => 7;
 use FormValidator::Lite;
 use CGI;
 
@@ -24,12 +24,4 @@ ok(!$v->is_error('boo'));
 ok(!$v->is_error('boy'));
 $v->set_error('boy' => 'is_girl');
 ok($v->is_error('boy'));
-
-# alias
-ok(!$v->is_error('hey'));
-ok(!$v->is_error('yo'));
-$v->set_alias('yo' => 'hey');
-$v->set_error('hey' => 'boo');
-ok($v->is_error('hey'));
-ok($v->is_error('yo'));
 

@@ -8,11 +8,9 @@ use YAML;
 
 # test get_error_message
 my $v = FormValidator::Lite->new(CGI->new({}));
-$v->set_alias('zip' => [qw/zip1 zip2/]);
 $v->set_error('baz' => 'NOT_NULL');
 $v->set_error('baz' => 'HIRAGANA');
-$v->set_error('zip1' => 'JZIP');
-$v->set_error('zip2' => 'JZIP');
+$v->set_error('zip' => 'JZIP');
 $v->set_message_data(YAML::Load(<<'...'));
 ---
 message:

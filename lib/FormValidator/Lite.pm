@@ -20,7 +20,7 @@ sub new {
     my ($class, $q) = @_;
     Carp::croak("Usage: ${class}->new(\$q)") unless $q;
 
-    bless { _q => $q, _alias => {}, _error => {} }, $class;
+    bless { _q => $q, _error => {} }, $class;
 }
 
 sub check {
@@ -60,17 +60,7 @@ sub check {
 
 sub is_error {
     my ($self, $key) = @_;
-
-    if ($self->{_alias}->{$key}) {
-        # aliased params
-        for my $alias (@{ $self->{_alias}->{$key} }) {
-            return 1 if $self->{_error}->{$alias};
-        }
-        return 0;
-    } else {
-        # normal params
-        $self->{_error}->{$key} ? 1 : 0;
-    }
+    $self->{_error}->{$key} ? 1 : 0;
 }
 
 sub has_error {
@@ -82,14 +72,6 @@ sub set_error {
     my ($self, $param, $rule_name) = @_;
     $self->{_error}->{$param}->{$rule_name}++;
     push @{$self->{_error_ary}}, [$param, $rule_name];
-}
-
-sub set_alias {
-    my ($self, @alias) = @_;
-    while (my ($key, $target) = splice(@alias, 0, 2)) {
-        $target = [$target] unless ref $target;
-        $self->{_alias}->{$key} = $target;
-    }
 }
 
 sub load_plugins {
@@ -113,27 +95,11 @@ sub get_error_messages {
     my $self = shift;
     Carp::croak("message doesn't loaded yet") unless $self->{_msg};
 
-    # invert the alias hash
-    #     param_name => aliased_name
-    my %param2aliased = do {
-        my %v;
-        while ( my ( $alias, $params ) = each %{ $self->{_alias} } ) {
-            for my $param ( @{$params} ) {
-                $v{$param} = $alias;
-            }
-        }
-        %v;
-    };
-
     my %dup_check;
     my @messages;
     for my $err (@{$self->{_error_ary}}) {
         my $param = $err->[0];
         my $func  = $err->[1];
-
-        if (exists $param2aliased{$param} ) {
-            $param = $param2aliased{$param};
-        }
 
         next if exists $dup_check{"$param.$func"};
         push @messages, $self->get_error_message( $param, $func );
@@ -189,14 +155,12 @@ FormValidator::Lite -
         $q => [
             name => [qw/NOT_NULL/],
             name_kana => [qw/NOT_NULL KATAKANA/],
+            {mails => [qw/mail1 mail2/]} => ['DUPLICATE'],
         ]
     );
     if ( ..... return_true_when_if_error() ..... ) {
         $validator->set_error('login_id' => 'DUPLICATE');
     }
-    $validator->set_alias(
-        zip  => [qw(zip1 zip2)]
-    );
     if ($validator->has_error) {
         ...
     }

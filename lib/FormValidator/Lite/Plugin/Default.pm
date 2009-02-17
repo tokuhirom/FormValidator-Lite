@@ -14,6 +14,7 @@ rule 'ASCII' => sub {
 rule 'DUPLICATION' => sub {
     $_->[0] eq $_->[1]
 };
+alias 'DUPLICATION' => 'DUP';
 
 # 'name' => [qw/LENGTH 5 20/],
 rule 'LENGTH' => sub {

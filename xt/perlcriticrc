@@ -1,2 +1,5 @@
 [TestingAndDebugging::ProhibitNoStrict]
 allow=refs
+
+[TestingAndDebugging::RequireUseStrict]
+equivalent_modules = OreOre::Validator::Plugin

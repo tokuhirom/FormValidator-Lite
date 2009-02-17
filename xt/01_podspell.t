@@ -8,3 +8,4 @@ __DATA__
 Default Name
 default {at} example.com
 OreOre::Validator
+PLUGINS

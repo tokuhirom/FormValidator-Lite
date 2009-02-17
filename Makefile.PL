@@ -2,12 +2,14 @@ use inc::Module::Install;
 name 'OreOre-Validator';
 all_from 'lib/OreOre/Validator.pm';
 
-# requires '';
+requires 'UNIVERSAL::require' => 0.11;
+requires 'Scalar::Util';
 
-tests 't/*.t';
-author_tests 'xt';
+tests('t/*.t t/*/*.t t/*/*/*.t');
+author_tests('xt');
 
 build_requires 'Test::More';
+test_requires 'YAML';
 use_test_base;
 auto_include;
 WriteAll;

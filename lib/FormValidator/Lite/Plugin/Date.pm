@@ -1,5 +1,5 @@
-package OreOre::Validator::Plugin::Date;
-use OreOre::Validator::Plugin;
+package FormValidator::Lite::Plugin::Date;
+use FormValidator::Lite::Plugin;
 
 rule 'DATE' => sub {
     return 0 unless scalar(@{$_}) == 3;

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use Test::More tests => 11;
-use OreOre::Validator;
+use FormValidator::Lite;
 use CGI;
 
 my $q = CGI->new(
@@ -9,7 +9,7 @@ my $q = CGI->new(
         foo => 'bar',
     },
 );
-my $v = OreOre::Validator->new($q);
+my $v = FormValidator::Lite->new($q);
 ok(!$v->has_error);
 $v->check(
     'foo' => [qw/NOT_NULL/],

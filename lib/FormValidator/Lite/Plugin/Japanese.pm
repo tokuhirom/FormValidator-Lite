@@ -1,5 +1,5 @@
-package OreOre::Validator::Plugin::Japanese;
-use OreOre::Validator::Plugin;
+package FormValidator::Lite::Plugin::Japanese;
+use FormValidator::Lite::Plugin;
 
 rule 'HIRAGANA' => sub { delsp($_) =~ /^\p{InHiragana}+$/  };
 rule 'KATAKANA' => sub { delsp($_) =~ /^\p{InKatakana}+$/  };

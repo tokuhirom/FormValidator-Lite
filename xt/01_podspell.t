@@ -7,5 +7,5 @@ all_pod_files_spelling_ok('lib');
 __DATA__
 Default Name
 default {at} example.com
-OreOre::Validator
+FormValidator::Lite
 PLUGINS

@@ -2,4 +2,4 @@
 allow=refs
 
 [TestingAndDebugging::RequireUseStrict]
-equivalent_modules = OreOre::Validator::Plugin
+equivalent_modules = FormValidator::Lite::Plugin

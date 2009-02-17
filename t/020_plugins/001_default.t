@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use utf8;
 use Test::Base;
-use OreOre::Validator;
+use FormValidator::Lite;
 use CGI;
 
 plan tests => 23;
@@ -17,7 +17,7 @@ run {
     my $block = shift;
     my $q = CGI->new($block->query);
 
-    my $v = OreOre::Validator->new($q);
+    my $v = FormValidator::Lite->new($q);
     $v->check(
         $block->rule
     );

@@ -1,5 +1,5 @@
-package OreOre::Validator::Plugin::Email;
-use OreOre::Validator::Plugin;
+package FormValidator::Lite::Plugin::Email;
+use FormValidator::Lite::Plugin;
 use Email::Valid::Loose;
 
 rule 'EMAIL_LOOSE' => sub {

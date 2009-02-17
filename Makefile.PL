@@ -1,6 +1,6 @@
 use inc::Module::Install;
-name 'OreOre-Validator';
-all_from 'lib/OreOre/Validator.pm';
+name 'FormValidator-Lite';
+all_from 'lib/FormValidator/Lite.pm';
 
 requires 'UNIVERSAL::require' => 0.11;
 requires 'Scalar::Util';

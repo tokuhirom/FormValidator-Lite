@@ -1,4 +1,4 @@
-package OreOre::Validator::Plugin;
+package FormValidator::Lite::Plugin;
 use strict;
 use warnings;
 
@@ -15,11 +15,11 @@ sub import {
 
 sub rule {
     my ($name, $code) = @_;
-    $OreOre::Validator::Rules->{$name} = $code;
+    $FormValidator::Lite::Rules->{$name} = $code;
 }
 sub alias {
     my ($from, $to) = @_;
-    $OreOre::Validator::Rules->{$to} = $OreOre::Validator::Rules->{$from};
+    $FormValidator::Lite::Rules->{$to} = $FormValidator::Lite::Rules->{$from};
 }
 sub delsp {
     my $x = $_;

@@ -1,5 +1,5 @@
-package OreOre::Validator::Plugin::URL;
-use OreOre::Validator::Plugin;
+package FormValidator::Lite::Plugin::URL;
+use FormValidator::Lite::Plugin;
 
 # this regexp is taken from http://www.din.or.jp/~ohzaki/perl.htm#httpURL
 # thanks to ohzaki++

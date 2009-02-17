@@ -1,5 +1,5 @@
-package OreOre::Validator::Plugin::Default;
-use OreOre::Validator::Plugin;
+package FormValidator::Lite::Plugin::Default;
+use FormValidator::Lite::Plugin;
 
 rule 'NULL' => sub { !$_ || $_ eq ""       };
 rule 'INT'  => sub { $_ =~ /^[+\-]?[0-9]+$/ };

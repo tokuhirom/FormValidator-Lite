@@ -1,11 +1,11 @@
-package OreOre::Validator;
+package FormValidator::Lite;
 use strict;
 use warnings;
 use 5.008_001;
 use Carp ();
 use UNIVERSAL::require;
 use Scalar::Util qw/blessed/;
-use OreOre::Validator::Plugin::Default;
+use FormValidator::Lite::Plugin::Default;
 
 our $VERSION = '0.01';
 
@@ -96,7 +96,7 @@ sub load_plugins {
     my $class = shift;
     for (@_) {
         my $plugin = $_;
-        $plugin = ($plugin =~ s/^\+//) ? $plugin : "OreOre::Validator::Plugin::${plugin}";
+        $plugin = ($plugin =~ s/^\+//) ? $plugin : "FormValidator::Lite::Plugin::${plugin}";
         $plugin->use or die $@;
     }
 }
@@ -175,15 +175,15 @@ __END__
 
 =head1 NAME
 
-OreOre::Validator -
+FormValidator::Lite -
 
 =head1 SYNOPSIS
 
-    use OreOre::Validator;
+    use FormValidator::Lite;
 
-    OreOre::Validator->load_plugins(qw/Japanese/);
+    FormValidator::Lite->load_plugins(qw/Japanese/);
 
-    my $validator = OreOre::Validator->new;
+    my $validator = FormValidator::Lite->new;
     my $q = CGI->new();
     my $res = $validator->check(
         $q => [
@@ -210,7 +210,7 @@ OreOre::Validator -
 
 =head1 DESCRIPTION
 
-OreOre::Validator is
+FormValidator::Lite is
 
 =head1 WHY NOT FormValidator::Simple?
 

@@ -1,7 +1,7 @@
 use Modern::Perl;
 use Benchmark ':all';
 use CGI;
-use OreOre::Validator qw/Email Date/; 
+use FormValidator::Lite qw/Email Date/; 
 
 my $C = 1000;
 
@@ -17,7 +17,7 @@ $q->param( day    => 27 );
 my $t = timeit(
     $C,
     sub {
-        my $result = OreOre::Validator->new($q)->check(
+        my $result = FormValidator::Lite->new($q)->check(
             param1 => [ 'NOT_BLANK', 'ASCII', [ 'LENGTH', 2, 5 ] ],
             param2 => [ 'NOT_BLANK', 'INT' ],
             mail1  => [ 'NOT_BLANK', 'EMAIL_LOOSE' ],

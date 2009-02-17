@@ -2,12 +2,12 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 3;
-use OreOre::Validator;
+use FormValidator::Lite;
 use CGI;
 use YAML;
 
 # test get_error_message
-my $v = OreOre::Validator->new(CGI->new({}));
+my $v = FormValidator::Lite->new(CGI->new({}));
 $v->set_message_data(YAML::Load(<<'...'));
 ---
 message:

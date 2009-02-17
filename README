@@ -1,11 +1,11 @@
-This is Perl module OreOre::Validator.
+This is Perl module FormValidator::Lite.
 
 INSTALLATION
 
-OreOre::Validator installation is straightforward. If your CPAN shell is set up,
+FormValidator::Lite installation is straightforward. If your CPAN shell is set up,
 you should just be able to do
 
-    % cpan OreOre::Validator
+    % cpan FormValidator::Lite
 
 Download it, unpack it, then build it as per the usual:
 
@@ -18,9 +18,9 @@ Then install it:
 
 DOCUMENTATION
 
-OreOre::Validator documentation is available as in POD. So you can do:
+FormValidator::Lite documentation is available as in POD. So you can do:
 
-    % perldoc OreOre::Validator
+    % perldoc FormValidator::Lite
 
 to read the documentation online with your favorite pager.
 

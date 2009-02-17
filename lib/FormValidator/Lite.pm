@@ -180,6 +180,12 @@ FormValidator::Lite is
 
 FormValidator::Simple is too heavy for me.
 
+And, FormValidator::Lite is fast!
+
+                            Rate FormValidator::Simple   FormValidator::Lite
+    FormValidator::Simple  442/s                    --                  -73%
+    FormValidator::Lite   1639/s                  270%                    --
+
 =head1 HOW TO WRITE YOUR OWN PLUGINS
 
     http parameter comes from $_

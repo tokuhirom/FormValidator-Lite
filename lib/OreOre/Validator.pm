@@ -31,22 +31,21 @@ sub check {
     while (my ($key, $rules) = splice(@rule_ary, 0, 2)) {
         local $_;
         if (ref $key) {
-            $_ = [ map { $q->param($_) } @{[values %$key]->[0]} ];
+            $_ = [ map { $q->param($_) } @{ [%$key]->[1] } ];
             ($key, ) = keys %$key;
         } else {
             $_ = $q->param($key);
         }
         for my $rule (@$rules) {
             my $rule_name = ref $rule ? shift(@$rule) : $rule;
-            my @args =  ref $rule ? @$rule : ();
             my $invert_fg = 0;
             $rule_name =~ s{^NOT_}{$invert_fg++; ''}e;
             my $result = do {
                 if (!$_ && $rule_name ne 'NULL') {
                     0; # avoid warnings
                 } else {
-                    my $rule = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");
-                    $rule->(@args) ? 1 : 0;
+                    my $code = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");
+                    $code->(ref $rule ? @$rule : ()) ? 1 : 0;
                 }
             };
             unless ($result ^ $invert_fg) { # XOR

@@ -5,9 +5,7 @@ use Test::Base;
 use OreOre::Validator;
 use CGI;
 
-plan skip_all => 'Email::Valid::Loose is required for this test' unless eval "use Email::Valid::Loose; 1;";
-
-OreOre::Validator->load_plugins(qw/Email/);
+OreOre::Validator->load_plugins(qw/Date/);
 
 plan tests => 2;
 
@@ -35,16 +33,25 @@ run {
 
 __END__
 
-=== EMAIL_LOOSE
---- query: { p1 => 'http://example.com/', p2 => 'foobar@example.com', }
+=== DATE
+--- query: { y => 2009, m => 2, d => 30 }
 --- rule
 (
-    p1 => ['EMAIL_LOOSE'],
-    p2 => ['EMAIL_LOOSE'],
-);
+    {date => [qw/y m d/]} => ['DATE'],
+)
 --- expected
 (
-    p1 => 1,
-    p2 => 0,
+    date => 1,
+)
+
+=== DATE
+--- query: { y => 2009, m => 2, d => 28 }
+--- rule
+(
+    {date => [qw/y m d/]} => ['DATE'],
+)
+--- expected
+(
+    date => 0,
 )
 

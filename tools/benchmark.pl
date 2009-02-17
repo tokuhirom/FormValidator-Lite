@@ -1,7 +1,7 @@
 use Modern::Perl;
 use Benchmark ':all';
 use CGI;
-use OreOre::Validator qw/Email/; 
+use OreOre::Validator qw/Email Date/; 
 
 my $C = 1000;
 
@@ -23,7 +23,7 @@ my $t = timeit(
             mail1  => [ 'NOT_BLANK', 'EMAIL_LOOSE' ],
             mail2  => [ 'NOT_BLANK', 'EMAIL_LOOSE' ],
             { mails => [ 'mail1', 'mail2' ] } => ['DUPLICATION'],
-            # { date => [ 'year', 'month', 'day' ] } => ['DATE'],
+            { date => [ 'year', 'month', 'day' ] } => ['DATE'],
         );
     }
 );

@@ -40,7 +40,7 @@ sub check {
         for my $rule (@$rules) {
             my $rule_name = ref $rule ? shift(@$rule) : $rule;
             my $invert_fg = 0;
-            $rule_name =~ s{^NOT_}{$invert_fg++; ''}e;
+            $rule_name =~ s{^NOT_}{$invert_fg++; ''}eo;
             my $result = do {
                 if (!$_ && $rule_name ne 'NULL') {
                     0; # avoid warnings
@@ -211,6 +211,10 @@ OreOre::Validator -
 =head1 DESCRIPTION
 
 OreOre::Validator is
+
+=head1 WHY NOT FormValidator::Simple?
+
+FormValidator::Simple is too heavy for me.
 
 =head1 HOW TO WRITE YOUR OWN PLUGINS
 

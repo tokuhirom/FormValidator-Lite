@@ -218,8 +218,8 @@ FormValidator::Simple is too heavy for me.
 
 =head1 HOW TO WRITE YOUR OWN PLUGINS
 
-    parameter comes from $_
-    args comes from @_
+    http parameter comes from $_
+    validator args comes from @_
 
 =head1 AUTHOR
 

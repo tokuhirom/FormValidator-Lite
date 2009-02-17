@@ -31,8 +31,9 @@ sub check {
     while (my ($key, $rules) = splice(@rule_ary, 0, 2)) {
         local $_;
         if (ref $key) {
-            $_ = [ map { $q->param($_) } @{ [%$key]->[1] } ];
-            ($key, ) = keys %$key;
+            $key = [%$key];
+            $_ = [ map { $q->param($_) } @{ $key->[1] } ];
+            $key = $key->[0];
         } else {
             $_ = $q->param($key);
         }

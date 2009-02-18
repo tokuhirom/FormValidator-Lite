@@ -141,7 +141,7 @@ __END__
 
 =head1 NAME
 
-FormValidator::Lite - liteweight form validation library
+FormValidator::Lite - lightweight form validation library
 
 =head1 SYNOPSIS
 

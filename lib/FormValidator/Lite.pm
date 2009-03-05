@@ -154,14 +154,12 @@ FormValidator::Lite - lightweight form validation library
 
     FormValidator::Lite->load_plugins(qw/Japanese/);
 
-    my $validator = FormValidator::Lite->new;
     my $q = CGI->new();
+    my $validator = FormValidator::Lite->new($q);
     my $res = $validator->check(
-        $q => [
-            name => [qw/NOT_NULL/],
-            name_kana => [qw/NOT_NULL KATAKANA/],
-            {mails => [qw/mail1 mail2/]} => ['DUPLICATE'],
-        ]
+        name => [qw/NOT_NULL/],
+        name_kana => [qw/NOT_NULL KATAKANA/],
+        {mails => [qw/mail1 mail2/]} => ['DUPLICATE'],
     );
     if ( ..... return_true_when_if_error() ..... ) {
         $validator->set_error('login_id' => 'DUPLICATE');

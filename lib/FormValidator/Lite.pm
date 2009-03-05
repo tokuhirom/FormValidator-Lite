@@ -63,6 +63,11 @@ sub is_error {
     $self->{_error}->{$key} ? 1 : 0;
 }
 
+sub is_valid {
+    my $self = shift;
+    !$self->has_error;
+}
+
 sub has_error {
     my ($self, ) = @_;
     %{ $self->{_error} } ? 1 : 0;
@@ -175,6 +180,8 @@ FormValidator::Lite - lightweight form validation library
 =head1 DESCRIPTION
 
 FormValidator::Lite is simple, fast implementation for form validation.
+
+IT'S IN BETA QUALITY. API MAY CHANGE IN FUTURE.
 
 =head1 WHY NOT FormValidator::Simple?
 

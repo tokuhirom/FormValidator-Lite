@@ -1,5 +1,5 @@
-package FormValidator::Lite::Plugin::Date;
-use FormValidator::Lite::Plugin;
+package FormValidator::Lite::Constraint::Date;
+use FormValidator::Lite::Constraint;
 
 rule 'DATE' => sub {
     return 0 unless scalar(@{$_}) == 3;

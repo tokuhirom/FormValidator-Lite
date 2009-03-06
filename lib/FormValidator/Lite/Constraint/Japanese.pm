@@ -1,5 +1,5 @@
-package FormValidator::Lite::Plugin::Japanese;
-use FormValidator::Lite::Plugin;
+package FormValidator::Lite::Constraint::Japanese;
+use FormValidator::Lite::Constraint;
 
 rule 'HIRAGANA' => sub { delsp($_) =~ /^\p{InHiragana}+$/  };
 rule 'KATAKANA' => sub { delsp($_) =~ /^\p{InKatakana}+$/  };

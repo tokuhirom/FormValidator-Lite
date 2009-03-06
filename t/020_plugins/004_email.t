@@ -7,7 +7,7 @@ use CGI;
 
 plan skip_all => "Email::Valid::Loose is required for this test: $@" unless eval "use Email::Valid::Loose; 1;";
 
-FormValidator::Lite->load_plugins(qw/Email/);
+FormValidator::Lite->load_constraints(qw/Email/);
 
 plan tests => 2;
 

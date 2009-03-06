@@ -1,4 +1,4 @@
-package FormValidator::Lite::Plugin;
+package FormValidator::Lite::Constraint;
 use strict;
 use warnings;
 

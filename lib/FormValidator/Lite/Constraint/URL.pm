@@ -1,5 +1,5 @@
-package FormValidator::Lite::Plugin::URL;
-use FormValidator::Lite::Plugin;
+package FormValidator::Lite::Constraint::URL;
+use FormValidator::Lite::Constraint;
 
 # this regexp is taken from http://www.din.or.jp/~ohzaki/perl.htm#httpURL
 # thanks to ohzaki++

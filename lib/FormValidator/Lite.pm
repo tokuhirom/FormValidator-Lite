@@ -5,15 +5,15 @@ use 5.008_001;
 use Carp ();
 use UNIVERSAL::require;
 use Scalar::Util qw/blessed/;
-use FormValidator::Lite::Plugin::Default;
+use FormValidator::Lite::Constraint::Default;
 
 our $VERSION = '0.01';
 
 our $Rules;
 
 sub import {
-    my ($class, @plugins) = @_;
-    $class->load_plugins(@plugins);
+    my ($class, @constraints) = @_;
+    $class->load_constraints(@constraints);
 }
 
 sub new {
@@ -80,12 +80,12 @@ sub set_error {
     push @{$self->{_error_ary}}, [$param, $rule_name];
 }
 
-sub load_plugins {
+sub load_constraints {
     my $class = shift;
     for (@_) {
-        my $plugin = $_;
-        $plugin = ($plugin =~ s/^\+//) ? $plugin : "FormValidator::Lite::Plugin::${plugin}";
-        $plugin->use or die $@;
+        my $constraint = $_;
+        $constraint = ($constraint =~ s/^\+//) ? $constraint : "FormValidator::Lite::Constraint::${constraint}";
+        $constraint->use or die $@;
     }
 }
 
@@ -167,7 +167,7 @@ FormValidator::Lite - lightweight form validation library
 
     use FormValidator::Lite;
 
-    FormValidator::Lite->load_plugins(qw/Japanese/);
+    FormValidator::Lite->load_constraints(qw/Japanese/);
 
     my $q = CGI->new();
     my $validator = FormValidator::Lite->new($q);
@@ -207,7 +207,7 @@ FormValidator::Lite is fast!
     FormValidator::Simple  442/s                    --                  -73%
     FormValidator::Lite   1639/s                  270%                    --
 
-=head1 HOW TO WRITE YOUR OWN PLUGINS
+=head1 HOW TO WRITE YOUR OWN CONSTRAINTS
 
     http parameter comes from $_
     validator args comes from @_

@@ -1,5 +1,5 @@
-package FormValidator::Lite::Plugin::Email;
-use FormValidator::Lite::Plugin;
+package FormValidator::Lite::Constraint::Email;
+use FormValidator::Lite::Constraint;
 use Email::Valid::Loose;
 
 rule 'EMAIL_LOOSE' => sub {

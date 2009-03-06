@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-FormValidator::Lite->load_plugins(qw/Date/);
+FormValidator::Lite->load_constraints(qw/Date/);
 
 plan tests => 2;
 

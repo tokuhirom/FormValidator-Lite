@@ -1,5 +1,5 @@
-package FormValidator::Lite::Plugin::Default;
-use FormValidator::Lite::Plugin;
+package FormValidator::Lite::Constraint::Default;
+use FormValidator::Lite::Constraint;
 
 rule 'NULL' => sub { !$_ || $_ eq ""       };
 rule 'INT'  => sub { $_ =~ /^[+\-]?[0-9]+$/ };

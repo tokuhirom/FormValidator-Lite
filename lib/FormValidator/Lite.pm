@@ -40,6 +40,7 @@ sub check {
         for my $rule (@$rules) {
             my $rule_name = ref $rule ? shift(@$rule) : $rule;
             my $invert_fg = 0;
+            my $orig_rule_name = $rule_name;
             $rule_name =~ s{^NOT_}{$invert_fg++; ''}eo;
             my $result = do {
                 if (!$_ && $rule_name ne 'NULL') {
@@ -50,7 +51,7 @@ sub check {
                 }
             };
             unless ($result ^ $invert_fg) { # XOR
-                $self->set_error($key => $rule_name);
+                $self->set_error($key => $orig_rule_name);
             }
         }
     }
@@ -86,6 +87,20 @@ sub load_plugins {
         $plugin = ($plugin =~ s/^\+//) ? $plugin : "FormValidator::Lite::Plugin::${plugin}";
         $plugin->use or die $@;
     }
+}
+
+sub load_function_message {
+    my ($self, $lang) = @_;
+    my $pkg = "FormValidator::Lite::Messages::$lang";
+    $pkg->require or die $@;
+
+    no strict 'refs';
+    $self->{_msg}->{function} = ${"${pkg}::MESSAGES"};
+}
+
+sub set_param_message {
+    my ($self, %args) = @_;
+    $self->{_msg}->{param} = \%args;
 }
 
 sub set_message_data {

@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan skip_all => 'Email::Valid::Loose is required for this test' unless eval "use Email::Valid::Loose; 1;";
+plan skip_all => "Email::Valid::Loose is required for this test: $@" unless eval "use Email::Valid::Loose; 1;";
 
 FormValidator::Lite->load_plugins(qw/Email/);
 

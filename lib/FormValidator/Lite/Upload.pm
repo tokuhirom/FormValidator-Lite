@@ -8,7 +8,7 @@ use Carp ();
     sub _load {
         my $pkg = shift;
         unless ($cache{$pkg}++) {
-            eval "use $pkg";
+            eval "use $pkg"; ## no critic
             Carp::croak($@) if $@;
         }
         $pkg;

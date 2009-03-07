@@ -218,9 +218,11 @@ FormValidator::Lite is fast!
 
 =head1 AUTHOR
 
-Default Name E<lt>default {at} example.comE<gt>
+Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
 
 =head1 SEE ALSO
+
+L<FormValidator::Simple>, L<Data::FormValidator>, L<HTML::FormFu>
 
 =head1 LICENSE
 

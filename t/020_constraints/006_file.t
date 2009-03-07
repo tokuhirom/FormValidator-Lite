@@ -45,43 +45,38 @@ my $q = do {
     CGI->new;
 };
 
-# -------------------------------------------------------------------------
+filters {
+    input => ['eval']
+};
 
-do {
-    do {
-        my $v = FormValidator::Lite->new($q);
-        $v->check(
-            hello_world => ['NOT_NULL', ['FILE_MIME', 'image/png']]
-        );
-        ok($v->has_error());
-    };
-    do {
-        my $v = FormValidator::Lite->new($q);
-        $v->check(
-            hello_world => ['NOT_NULL', ['FILE_MIME', 'text/plain']]
-        );
-        ok(!$v->has_error());
-    };
-    do {
-        my $v = FormValidator::Lite->new($q);
-        $v->check(
-            hello_world => ['NOT_NULL', ['FILE_MIME', qr{^text/.+$}]]
-        );
-        ok(!$v->has_error());
-    };
-    do {
-        my $v = FormValidator::Lite->new($q);
-        $v->check(
-            hello_world => ['NOT_NULL', ['FILE_MIME', qr{^image/.+$}]]
-        );
-        ok($v->has_error());
-    };
-    do {
-        my $v = FormValidator::Lite->new($q);
-        $v->check(
-            hello_world => ['NOT_NULL', ['FILE_MIME', 'plain']]
-        );
-        ok($v->has_error());
-    };
-}
+run {
+    my $block = shift;
+    my $v = FormValidator::Lite->new($q);
+    $v->check(
+        hello_world => [$block->input]
+    );
+    is($v->has_error, $block->expected);
+};
+
+__END__
+
+===
+--- input: ['FILE_MIME', 'plain']
+--- expected: 1
+
+===
+--- input: ['FILE_MIME', qr{^text/.+$}]
+--- expected: 0
+
+===
+--- input: ['FILE_MIME', qr{^image/.+$}]
+--- expected: 1
+
+===
+--- input: ['FILE_MIME', 'image/png']
+--- expected: 1
+
+===
+--- input: ['FILE_MIME', 'text/plain']
+--- expected: 0
 

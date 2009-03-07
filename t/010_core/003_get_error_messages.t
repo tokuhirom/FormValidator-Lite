@@ -20,8 +20,8 @@ param:
   bar: ばあ
   baz: ばず
 function:
-  not_null: %sがからっぽです
-  hiragana: %sがひらがなじゃありません
+  not_null: "[_1]がからっぽです"
+  hiragana: "[_1]がひらがなじゃありません"
 ...
 is_deeply([$v->get_error_messages], YAML::Load(<<'...'), 'order is assured');
 ---

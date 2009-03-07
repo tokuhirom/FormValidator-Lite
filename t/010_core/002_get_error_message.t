@@ -17,8 +17,8 @@ param:
   bar: ばあ
   baz: ばず
 function:
-  not_null: %sがからっぽです
-  hiragana: %sがひらがなじゃありません
+  not_null: "[_1]がからっぽです"
+  hiragana: "[_1]がひらがなじゃありません"
 ...
 is($v->get_error_message('baz', 'NOT_NULL'), 'ばずがからっぽです');
 is($v->get_error_message('baz', 'HIRAGANA'), 'ばずがひらがなじゃありません');

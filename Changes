@@ -1,5 +1,11 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.01_02
+
+        - my name is tokuhirom. not a 'default name'
+        - added japanese error message dictionary
+        - use gettext style parameter for messages
+
 0.01_01
 
         - initial developer release

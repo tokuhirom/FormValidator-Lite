@@ -11,6 +11,7 @@ use FormValidator::Lite::Upload;
 our $VERSION = '0.01';
 
 our $Rules;
+our $FileRules;
 
 sub import {
     my ($class, @constraints) = @_;
@@ -44,8 +45,13 @@ sub check {
                 if ((not defined $_) && $rule_name ne 'NOT_NULL') {
                     1;
                 } else {
-                    my $code = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");
-                    $code->(ref $rule ? @$rule : ()) ? 1 : 0;
+                    if (my $file_rule = $FileRules->{$rule_name}) {
+                        local $_ = FormValidator::Lite::Upload->new($q, $key);
+                        $file_rule->(ref $rule ? @$rule : ()) ? 1 : 0;
+                    } else {
+                        my $code = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");
+                        $code->(ref $rule ? @$rule : ()) ? 1 : 0;
+                    }
                 }
             };
             if ($is_ok==0) {

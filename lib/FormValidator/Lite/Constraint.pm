@@ -9,6 +9,7 @@ sub import {
     no strict 'refs';
     my $pkg = caller(0);
     *{"$pkg\::rule"}    = \&rule;
+    *{"$pkg\::file_rule"}    = \&file_rule;
     *{"$pkg\::alias"}   = \&alias;
     *{"$pkg\::delsp"}    = \&delsp;
 }
@@ -16,6 +17,10 @@ sub import {
 sub rule {
     my ($name, $code) = @_;
     $FormValidator::Lite::Rules->{$name} = $code;
+}
+sub file_rule {
+    my ($name, $code) = @_;
+    $FormValidator::Lite::FileRules->{$name} = $code;
 }
 sub alias {
     my ($from, $to) = @_;

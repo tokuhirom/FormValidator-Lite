@@ -40,19 +40,16 @@ sub check {
         }
         for my $rule (@$rules) {
             my $rule_name = ref $rule ? shift(@$rule) : $rule;
-            my $invert_fg = 0;
-            my $orig_rule_name = $rule_name;
-            $rule_name =~ s{^NOT_}{$invert_fg++; ''}eo;
-            my $result = do {
-                if (!$_ && $rule_name ne 'NULL') {
-                    0; # avoid warnings
+            my $is_ok = do {
+                if ((not defined $_) && $rule_name ne 'NOT_NULL') {
+                    1;
                 } else {
                     my $code = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");
                     $code->(ref $rule ? @$rule : ()) ? 1 : 0;
                 }
             };
-            unless ($result ^ $invert_fg) { # XOR
-                $self->set_error($key => $orig_rule_name);
+            if ($is_ok==0) {
+                $self->set_error($key => $rule_name);
             }
         }
     }

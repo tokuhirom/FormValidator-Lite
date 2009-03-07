@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 23;
+plan tests => 21;
 
 filters {
     query    => [qw/eval/],
@@ -37,15 +37,11 @@ __END__
 (
     hoge => [qw/NOT_NULL/],
     fuga => [qw/NOT_NULL/],
-    hoga => [qw/NULL/],
-    haga => [qw/NULL/],
 );
 --- expected
 (
     hoge => 0,
     fuga => 1,
-    hoga => 1,
-    haga => 0,
 )
 
 === INT

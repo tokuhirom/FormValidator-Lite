@@ -1,10 +1,10 @@
 package FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Constraint;
 
-rule 'NULL' => sub { !$_ || $_ eq ""       };
+rule 'NOT_NULL' => sub { defined($_) && $_ ne ""     };
 rule 'INT'  => sub { $_ =~ /^[+\-]?[0-9]+$/ };
 rule 'UINT' => sub { $_ =~ /^[0-9]+$/      };
-alias 'NULL' => 'BLANK';
+alias 'NOT_NULL' => 'NOT_BLANK';
 
 rule 'ASCII' => sub {
     $_ =~ /^[\x21-\x7E]+$/

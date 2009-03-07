@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 6;
 use FormValidator::Lite;
 use CGI;
 
@@ -14,12 +14,10 @@ ok(!$v->has_error);
 $v->check(
     'foo' => [qw/NOT_NULL/],
     'baz' => [qw/NOT_NULL/],
-    'boo' => [qw/NULL/],
 );
 ok($v->has_error);
 ok(!$v->is_error('foo'));
-ok($v->is_error('baz'));
-ok(!$v->is_error('boo'));
+ok($v->is_error('baz'), 'baz');
 
 ok(!$v->is_error('boy'));
 $v->set_error('boy' => 'is_girl');

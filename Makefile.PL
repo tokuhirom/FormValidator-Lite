@@ -3,7 +3,7 @@ name 'FormValidator-Lite';
 all_from 'lib/FormValidator/Lite.pm';
 
 requires 'UNIVERSAL::require' => 0.11;
-requires 'Scalar::Util';
+requires 'Scalar::Util' => 1.19;
 
 tests('t/*.t t/*/*.t t/*/*/*.t');
 author_tests('xt');

@@ -6,7 +6,7 @@ use FormValidator::Lite 'File';
 use CGI;
 use Smart::Comments;
 
-plan tests => 5;
+plan tests => 1*blocks;
 
 # Copied from CGI.pm - http://search.cpan.org/perldoc?CGI
 %ENV = (
@@ -45,17 +45,14 @@ my $q = do {
     CGI->new;
 };
 
-filters {
-    input => ['eval']
-};
-
 run {
     my $block = shift;
     my $v = FormValidator::Lite->new($q);
     $v->check(
-        hello_world => [$block->input]
+        hello_world => [eval $block->input]
     );
-    is($v->has_error, $block->expected);
+    die $@ if $@;
+    is($v->has_error, $block->expected, $block->input);
 };
 
 __END__
@@ -78,5 +75,21 @@ __END__
 
 ===
 --- input: ['FILE_MIME', 'text/plain']
+--- expected: 0
+
+=== max only(ok) (real file size is 13)
+--- input: ['FILE_SIZE', 100]
+--- expected: 0
+
+=== max only(no good)
+--- input: ['FILE_SIZE', 3]
+--- expected: 1
+
+=== max and min
+--- input: ['FILE_SIZE', 20, 15]
+--- expected: 1
+
+=== max and min(ok)
+--- input: ['FILE_SIZE', 20, 13]
 --- expected: 0
 

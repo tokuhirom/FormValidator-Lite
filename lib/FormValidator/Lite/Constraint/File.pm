@@ -8,4 +8,16 @@ file_rule 'FILE_MIME' => sub {
     return $_->type =~ /^$expected$/;
 };
 
+file_rule 'FILE_SIZE' => sub {
+    Carp::croak('missing args. usage: ["FILE_SIZE", 1_000_000, 100]') unless @_;
+
+    my $size   = $_->size;
+    my $max    = shift;
+    my $min    = shift;
+
+    return 0 if $max < $size;
+    return 0 if defined($min) && $min > $size;
+    return 1;
+};
+
 1;

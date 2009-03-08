@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.01_04
+
+        - added new constraint 'choice'
+
 0.01_03
 
         - oops. remove 'use Smart::Comments'

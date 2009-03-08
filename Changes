@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.01_05
+
+        - support NOT_NULL constraint in {date => [qw/y m d/]} style key
+
 0.01_04
 
         - added new constraint 'choice'

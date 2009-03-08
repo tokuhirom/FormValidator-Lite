@@ -33,4 +33,17 @@ rule 'REGEX' => sub {
 };
 alias 'REGEX' => 'REGEXP';
 
+rule 'CHOICE' => sub {
+    Carp::croak("missing \$choices") if @_ == 0;
+
+    my @choices = @_==1 && ref$_[0]eq'ARRAY' ? @{$_[0]} : @_;
+
+    for my $c (@choices) {
+        if ($c eq $_) {
+            return 1;
+        }
+    }
+    return 0;
+};
+
 1;

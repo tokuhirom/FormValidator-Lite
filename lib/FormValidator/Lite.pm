@@ -214,9 +214,13 @@ Yes, I know. This module is very similar with FV::S.
 But, FormValidator::Simple is too heavy for me.
 FormValidator::Lite is fast!
 
-                            Rate FormValidator::Simple   FormValidator::Lite
-    FormValidator::Simple  442/s                    --                  -73%
-    FormValidator::Lite   1639/s                  270%                    --
+   Perl: 5.010000
+   FVS: 0.23
+   FVL: 0.02
+                           Rate FormValidator::Simple   FormValidator::Lite
+   FormValidator::Simple  353/s                    --                  -75%
+   FormValidator::Lite   1429/s                  304%                    --
+
 
 =head1 HOW TO WRITE YOUR OWN CONSTRAINTS
 

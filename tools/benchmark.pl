@@ -4,6 +4,10 @@ use CGI;
 use FormValidator::Lite qw/Email Date/; 
 use FormValidator::Simple;
 
+say "Perl: $]";
+say "FVS: $FormValidator::Simple::VERSION";
+say "FVL: $FormValidator::Lite::VERSION";
+
 my $C = 1000;
 
 my $q = CGI->new;

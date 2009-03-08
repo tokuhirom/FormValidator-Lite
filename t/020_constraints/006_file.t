@@ -4,7 +4,6 @@ use utf8;
 use Test::Base;
 use FormValidator::Lite 'File';
 use CGI;
-use Smart::Comments;
 
 plan tests => 1*blocks;
 

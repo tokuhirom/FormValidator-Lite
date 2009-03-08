@@ -1,7 +1,13 @@
 package FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Constraint;
+use List::MoreUtils 'any';
 
-rule 'NOT_NULL' => sub { defined($_) && $_ ne ""     };
+rule 'NOT_NULL' => sub {
+    return 0 if not defined($_);
+    return 0 if $_ eq "";
+    return 0 if ref($_)eq'ARRAY' && @$_ == 0;
+    return 1;
+};
 rule 'INT'  => sub { $_ =~ /^[+\-]?[0-9]+$/ };
 rule 'UINT' => sub { $_ =~ /^[0-9]+$/      };
 alias 'NOT_NULL' => 'NOT_BLANK';

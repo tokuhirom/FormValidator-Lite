@@ -2,9 +2,21 @@ package FormValidator::Lite::Constraint::Date;
 use FormValidator::Lite::Constraint;
 
 rule 'DATE' => sub {
-    return 0 unless scalar(@{$_}) == 3;
+    if (ref $_) {
+        # query: y=2009&m=09&d=02
+        # rule:  {date => [qw/y m d/]} => ['DATE']
+        return 0 unless scalar(@{$_}) == 3;
+        _v(@{$_});
+    } else {
+        # query: date=2009-09-02
+        # rule:  date => ['DATE']
+        _v(split /-/, $_);
+    }
+};
 
-    my ($y, $m, $d) = @{$_};
+sub _v {
+    my ($y, $m, $d) = @_;
+
     if ($d > 31 or $d < 1 or $m > 12 or $m < 1 or $y == 0) {
         return 0;
     }
@@ -18,6 +30,7 @@ rule 'DATE' => sub {
         return 0;
     }
     return 1;
-};
+}
+
 
 1;

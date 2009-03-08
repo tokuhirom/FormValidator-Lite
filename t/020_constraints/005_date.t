@@ -7,7 +7,7 @@ use CGI;
 
 FormValidator::Lite->load_constraints(qw/Date/);
 
-plan tests => 4;
+plan tests => 1*blocks;
 
 filters {
     query    => [qw/eval/],
@@ -75,5 +75,16 @@ __END__
 --- expected
 (
     date => 1,
+)
+
+=== DATE
+--- query: { date => '2009-02-28' }
+--- rule
+(
+    date => ['DATE'],
+)
+--- expected
+(
+    date => 0,
 )
 

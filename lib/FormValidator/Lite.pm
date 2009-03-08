@@ -70,7 +70,7 @@ sub is_error {
 
 sub is_valid {
     my $self = shift;
-    !$self->has_error;
+    !$self->has_error ? 1 : 0;
 }
 
 sub has_error {

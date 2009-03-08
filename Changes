@@ -1,5 +1,10 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.02
+
+        - is_valid returns 1 or 0
+        - support single value date validation
+
 0.01_05
 
         - support NOT_NULL constraint in {date => [qw/y m d/]} style key

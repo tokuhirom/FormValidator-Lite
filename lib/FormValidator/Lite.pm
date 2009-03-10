@@ -115,6 +115,15 @@ sub set_message_data {
     $self->{_msg} = $msg;
 }
 
+sub set_message {
+    my ($self, @args) = @_;
+    my %msg = ref $args[0] ? %{$args[0]} : @args;
+    $self->{_msg}->{message} = +{
+        %{ $self->{_msg}->{message} },
+        %msg
+    };
+}
+
 sub get_error_messages {
     my $self = shift;
     Carp::croak("message doesn't loaded yet") unless $self->{_msg};

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 3;
+use Test::More tests => 4;
 use FormValidator::Lite;
 use CGI;
 
@@ -22,4 +22,7 @@ $v->set_param_message(
     baz => 'baz',
 );
 is join('', $v->get_error_messages), 'please input baz';
+
+$v->set_message('baz.not_null' => 'pleeeeeease input baz');
+is join('', $v->get_error_messages), 'pleeeeeease input baz';
 

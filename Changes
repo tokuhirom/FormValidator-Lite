@@ -1,5 +1,10 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.02_01
+
+        - fixed uuv
+        - added set_message method
+
 0.02
 
         - is_valid returns 1 or 0

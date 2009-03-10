@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.02';
+our $VERSION = '0.02_01';
 
 our $Rules;
 our $FileRules;

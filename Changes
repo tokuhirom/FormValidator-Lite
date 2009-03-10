@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.02_02
+
+        - oops. i don't use List::MoreUtils.
+
 0.02_01
 
         - fixed uuv

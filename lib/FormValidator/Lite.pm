@@ -119,7 +119,7 @@ sub set_message {
     my ($self, @args) = @_;
     my %msg = ref $args[0] ? %{$args[0]} : @args;
     $self->{_msg}->{message} = +{
-        %{ $self->{_msg}->{message} },
+        %{ $self->{_msg}->{message} || +{} },
         %msg
     };
 }

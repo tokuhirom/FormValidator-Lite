@@ -1,6 +1,5 @@
 package FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Constraint;
-use List::MoreUtils 'any';
 
 rule 'NOT_NULL' => sub {
     return 0 if not defined($_);

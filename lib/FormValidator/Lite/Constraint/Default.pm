@@ -18,7 +18,7 @@ rule 'ASCII' => sub {
 
 # {mails => [qw/mail1 mail2/]} => ['DUPLICATION']
 rule 'DUPLICATION' => sub {
-    $_->[0] eq $_->[1]
+    defined($_->[0]) && defined($_->[1]) && $_->[0] eq $_->[1]
 };
 alias 'DUPLICATION' => 'DUP';
 

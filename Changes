@@ -1,5 +1,10 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.04
+
+        - do not modify arguments in $fvl->check().
+          (reported by craftworks++)
+
 0.03
 
         - bump up version

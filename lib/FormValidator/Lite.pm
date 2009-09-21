@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 our $Rules;
 our $FileRules;
@@ -241,6 +241,10 @@ FormValidator::Lite is fast!
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
+
+=head1 THANKS TO
+
+craftworks
 
 =head1 SEE ALSO
 

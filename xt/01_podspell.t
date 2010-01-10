@@ -12,3 +12,4 @@ PLUGINS
 api
 Tokuhiro
 Matsuno
+craftworks

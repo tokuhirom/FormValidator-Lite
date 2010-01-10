@@ -5,6 +5,8 @@ all_from 'lib/FormValidator/Lite.pm';
 requires 'UNIVERSAL::require' => 0.11;
 requires 'Scalar::Util' => 1.19; #older Scalar::Util has bug
 
+test_requires 'Test::Requires' => 0.03;
+
 recommends 'Email::Valid::Loose';
 
 tests('t/*.t t/*/*.t t/*/*/*.t');

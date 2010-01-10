@@ -238,6 +238,16 @@ FormValidator::Lite is fast!
     http parameter comes from $_
     validator args comes from @_
 
+=head1 METHODS
+
+=over 4
+
+=item my $validator = FormValidator::Lite->new($q);
+
+$q is query like object, such as Apache::Request, CGI.pm, Plack::Request.
+
+=back
+
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>

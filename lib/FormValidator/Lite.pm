@@ -177,6 +177,24 @@ sub get_error_message {
     }
 }
 
+sub get_error_messages_from_param {
+    my ($self, $target_param) = @_;
+
+    my %dup_check;
+    my @messages;
+    for my $err (@{$self->{_error_ary}}) {
+        my $param = $err->[0];
+        my $func  = $err->[1];
+
+        next if $target_param ne $param;
+        next if exists $dup_check{"$param.$func"};
+        push @messages, $self->get_error_message( $param, $func );
+        $dup_check{"$param.$func"}++;
+    }
+
+    return @messages;
+}
+
 1;
 
 __END__

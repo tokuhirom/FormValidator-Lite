@@ -1,5 +1,10 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.05
+
+        - added $validator->get_error_messages_from_param($param) method
+          (by nekokak++)
+
 0.04
 
         - do not modify arguments in $fvl->check().

@@ -2,6 +2,7 @@ package FormValidator::Lite::Upload;
 use strict;
 use warnings;
 use Carp ();
+use Scalar::Util qw/blessed/;
 
 {
     my %cache;
@@ -19,11 +20,12 @@ use Carp ();
 sub new {
     my ($self, $q, $name) = @_;
     Carp::croak("missing parameter \$name") unless $name;
+    Carp::croak("\$q is not a object") unless blessed $q;
 
     my $pkg = do {
-        if (ref $q eq 'CGI') {
+        if ($q->isa('CGI')) {
             'CGI';
-        } elsif (ref $q eq 'HTTP::Engine::Request') {
+        } elsif ($q->isa('HTTP::Engine::Request')) {
             'HTTPEngine';
         } else {
             if ($q->can('upload') && (my $u = $q->upload($name))) {

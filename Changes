@@ -1,5 +1,10 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.06
+
+        - use isa for detect request object type
+          (suggested by typester++)
+
 0.05
 
         - added $validator->get_error_messages_from_param($param) method

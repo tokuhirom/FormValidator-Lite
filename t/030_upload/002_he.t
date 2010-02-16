@@ -1,9 +1,8 @@
 use strict;
 use warnings;
 use FormValidator::Lite;
-use Test::More;
-plan skip_all => 'this test requires HTTP::Engine' unless eval 'use HTTP::Engine; use HTTP::Request; 1;';
-plan tests => 8;
+use Test::Requires 'HTTP::Engine', 'HTTP::Engine::Request', 'HTTP::Request';
+use Test::More tests => 8;
 
 do {
     my $q = do {

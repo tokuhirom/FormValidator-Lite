@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.07
+
+        - oops. fixed broken test.
+
 0.06
 
         - use isa for detect request object type

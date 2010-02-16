@@ -4,8 +4,7 @@ use utf8;
 use Test::Base;
 use FormValidator::Lite;
 use CGI;
-
-plan skip_all => "Email::Valid::Loose is required for this test: $@" unless eval "use Email::Valid::Loose; 1;";
+use Test::Requires 'Email::Valid::Loose';
 
 FormValidator::Lite->load_constraints(qw/Email/);
 

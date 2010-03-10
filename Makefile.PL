@@ -5,6 +5,10 @@ all_from 'lib/FormValidator/Lite.pm';
 requires 'UNIVERSAL::require' => 0.11;
 requires 'Scalar::Util' => 1.19; #older Scalar::Util has bug
 
+# CGI < 3.31 has a OSX depended bug.
+# > 2. Patch from Alexander Klink to select correct temporary directory in OSX Leopard so that upload works.
+requires 'CGI' => 3.31;
+
 test_requires 'Test::Requires' => 0.03;
 
 recommends 'Email::Valid::Loose';

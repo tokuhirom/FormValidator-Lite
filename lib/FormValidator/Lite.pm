@@ -236,6 +236,98 @@ FormValidator::Lite is simple, fast implementation for form validation.
 
 IT'S IN BETA QUALITY. API MAY CHANGE IN FUTURE.
 
+=head1 HOW TO WRITE YOUR OWN CONSTRAINTS
+
+    http parameter comes from $_
+    validator args comes from @_
+
+=head1 METHODS
+
+=over 4
+
+=item my $validator = FormValidator::Lite->new($q);
+
+Create a new instance.
+
+$q is query like object, such as Apache::Request, CGI.pm, Plack::Request.
+
+=item $validator->check(@rule_ary)
+
+This method do validation.
+
+=item $validator->is_error($key)
+
+Return true value if parameter named $key got error.
+
+=item $validator->is_valid()
+
+Return true value if $validator don't detects error.
+
+This is same as !$validator->has_error().
+
+=item $validator->has_error()
+
+Return true value if $validator detects error.
+
+This is same as !$validator->is_valid().
+
+=item $validator->set_error($param, $rule_name)
+
+Set new error to parameter named $param. The rule name is  $rule_name.
+
+=item $validator->load_constraints($name)
+
+load constraint components named "FormValidator::Lite::Constraint::${name}".
+
+=item $validator->load_function_message($lang)
+
+Load function message file.
+
+Currently, FormValidator::Lite::Messages::ja and FormValidator::Lite::Messages::en are available.
+
+=item $validator->set_param_message($param => $message, ...)
+    
+    $validator->set_param_message(
+        name => 'Your Name',
+    );
+
+Make relational map for the parameter name to human readable name.
+
+=item $validator->set_message_data({ message => $msg, param => $param, function => $function })
+
+    $v->set_message_data(YAML::Load(<<'...'));
+    ---
+    message:
+      zip.jzip: Please input correct zip number.
+    param:
+      name: Your Name
+    function:
+      not_null: "[_1] is empty"
+      hiragana: "[_1] is not Hiragana"
+    ...
+
+Setup error message map.
+
+=item $validator->set_message("$param.$func" => $message)
+
+    $v->set_message('zip.jzip' => 'Please input correct zip number.');
+
+Set error message for the $param and $func.
+
+=item my @errors = $validator->get_error_messages()
+
+Get whole error messages for $q in arrayref.
+
+=item my $msg = $validator->get_error_message($param => $func)
+
+Generate error message for paramater $param and function named $func.
+
+=item my @msgs = $validator->get_error_messages_from_param($param)
+
+Get error messages by $q for paramater $param.
+
+=back
+
 =head1 WHY NOT FormValidator::Simple?
 
 Yes, I know. This module is very similar with FV::S.
@@ -249,54 +341,6 @@ FormValidator::Lite is fast!
                            Rate FormValidator::Simple   FormValidator::Lite
    FormValidator::Simple  353/s                    --                  -75%
    FormValidator::Lite   1429/s                  304%                    --
-
-
-=head1 HOW TO WRITE YOUR OWN CONSTRAINTS
-
-    http parameter comes from $_
-    validator args comes from @_
-
-=head1 METHODS
-
-=over 4
-
-=item my $validator = FormValidator::Lite->new($q);
-
-$q is query like object, such as Apache::Request, CGI.pm, Plack::Request.
-
-=item $validator->check(@rule_ary)
-
-=item $validator->is_error($key)
-
-=item $validator->is_valid()
-
-=item $validator->has_error()
-
-Got a error?
-
-=item $validator->set_error($param, $rule_name)
-
-=item $validator->load_constraints($name)
-
-load constraint components named "FormValidator::Lite::Constraint::${name}".
-
-=item $validator->load_function_message($lang)
-
-Load function message file.
-
-=item $validator->set_param_message($param => $message, ...)
-
-=item $validator->set_message_data({ message => $msg, param => $param, function => $function })
-
-=item $validator->set_message("$param.$func" => $message)
-
-=item $validator->get_error_messages()
-
-=item $validator->get_error_message($param => $func)
-
-=item $validator->get_error_messages_from_param($param)
-
-=back
 
 =head1 AUTHOR
 

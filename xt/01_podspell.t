@@ -17,3 +17,13 @@ CGI
 nekokak
 param
 pm
+HIRAGANA
+Hiragana
+KATAKANA
+Katakana
+URL
+URI
+UINT
+JTEL
+JZIP
+DUP

@@ -8,3 +8,20 @@ rule 'HTTP_URL' => sub {
 };
 
 1;
+__END__
+
+=head1 NAME
+
+FormValidator::Lite::Constraint::URL - is this valid URL?
+
+=head1 CONSTRAINTS
+
+=over 4
+
+=item HTTP_URL
+
+The parameter is valid URL or not.
+
+=back
+
+

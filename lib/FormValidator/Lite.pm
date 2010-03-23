@@ -320,11 +320,11 @@ Get whole error messages for $q in arrayref.
 
 =item my $msg = $validator->get_error_message($param => $func)
 
-Generate error message for paramater $param and function named $func.
+Generate error message for parameter $param and function named $func.
 
 =item my @msgs = $validator->get_error_messages_from_param($param)
 
-Get error messages by $q for paramater $param.
+Get error messages by $q for parameter $param.
 
 =back
 

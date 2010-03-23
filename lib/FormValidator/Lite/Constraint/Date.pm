@@ -34,3 +34,33 @@ sub _v {
 
 
 1;
+__END__
+
+=head1 NAME
+
+FormValidator::Lite::Constraint::Date - date constraints
+
+=head1 DESCRIPTION
+
+This module provides date constraints.
+
+=head1 CONSTRAINTS
+
+=over 4
+
+=item DATE
+
+    $validator = FormValidator::Lite->new(CGI->new("date=2009-09-02"));
+    $validator->check(
+        date => ['DATE']
+    );
+    # or
+    $validator = FormValidator::Lite->new(CGI->new("y=2009&m=09&d=02"));
+    $validator->check(
+        {date => [qw/y m d/]} => ['DATE']
+    );
+
+This constraints checks the parameter is valid date or not.
+
+=back
+

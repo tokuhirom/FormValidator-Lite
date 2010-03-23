@@ -21,3 +21,37 @@ file_rule 'FILE_SIZE' => sub {
 };
 
 1;
+__END__
+
+=head1 NAME
+
+FormValidator::Lite::Constraint::File - file constraints
+
+=head1 DESCRIPTION
+
+This module provides validation rule for uploaded files.
+
+=head1 RULES
+
+=over 4
+
+=item FILE_MIME
+
+    $valiator->check(
+        'file' => ['FILE_MIME', 'text/plain'],
+    );
+
+Check the file content-type.
+
+=item FILE_SIZE
+
+    $valiator->check(
+        'file' => ['FILE_SIZE', 1_000_000, 100],
+    );
+
+Check the file size.First argument is $max, and second is $min.
+Second argument is optional.
+
+=back
+
+

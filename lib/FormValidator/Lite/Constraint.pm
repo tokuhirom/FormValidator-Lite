@@ -33,3 +33,38 @@ sub delsp {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+FormValidator::Lite::Constraint - utilities for writing constraint rules.
+
+=head1 DESCRIPTION
+
+This module provides some utility classes for writing constraint rules declaratively.
+
+This module enables strict->import and warnings->import automatically.
+
+=head1 FUNCTIONS
+
+=over 4
+
+=item rule($name, $code)
+
+Define new rule.
+
+=item file_rule($name, $code)
+
+Define new file uploading rule.
+
+=item alias($from => $to)
+
+Define the alias.
+
+=item delsp($x)
+
+Remove white space from $x and return it.
+
+=back
+
+

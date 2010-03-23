@@ -31,3 +31,9 @@ our $MESSAGES = {
 };
 
 1;
+__END__
+
+=head1 NAME
+
+FormValidator::Lite::Messages::ja - Japanese language resource
+

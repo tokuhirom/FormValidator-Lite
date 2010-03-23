@@ -11,3 +11,9 @@ our $MESSAGES = {
 };
 
 1;
+__END__
+
+=head1 NAME
+
+FormValidator::Lite::Messages::ja - English language resource
+

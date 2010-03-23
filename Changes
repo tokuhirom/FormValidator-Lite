@@ -1,5 +1,13 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.10
+
+        - no feature changes
+
+0.09
+
+        - added docs. 
+
 0.08
 
         - depend to CGI.pm 3.31 or later.

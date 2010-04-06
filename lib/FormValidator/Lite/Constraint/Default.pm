@@ -103,8 +103,8 @@ Synonym of DUPLICATION.
 =item LENGTH
     
     $validator->check(
-        name     => [qw/LENGTH 5 20/],
-        password => [qw/LENGTH 5/],
+        name     => [[qw/LENGTH 5 20/]],
+        password => [[qw/LENGTH 5/]],
     );
 
 Check the length of data. First argument means $minumum value, second argument is $max.
@@ -113,7 +113,7 @@ $max is optional.
 =item REGEX
 
     $validator->check(
-        name => [REGEXP => qr/^[0-9]$/],
+        name => [[REGEXP => qr/^[0-9]$/]],
     );
 
 Check regexp matches parameter or not.
@@ -125,7 +125,7 @@ Synonym of REGEX.
 =item CHOICE
 
     $validator->check(
-        sex => [CHOICE => qw/male female/]
+        sex => [[CHOICE => qw/male female/]]
     );
 
 The parameter is one of choice or not.

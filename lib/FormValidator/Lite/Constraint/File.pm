@@ -38,7 +38,7 @@ This module provides validation rule for uploaded files.
 =item FILE_MIME
 
     $valiator->check(
-        'file' => ['FILE_MIME', 'text/plain'],
+        'file' => [['FILE_MIME', 'text/plain']],
     );
 
 Check the file content-type.
@@ -46,7 +46,7 @@ Check the file content-type.
 =item FILE_SIZE
 
     $valiator->check(
-        'file' => ['FILE_SIZE', 1_000_000, 100],
+        'file' => [['FILE_SIZE', 1_000_000, 100]],
     );
 
 Check the file size.First argument is $max, and second is $min.

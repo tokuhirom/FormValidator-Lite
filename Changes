@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.11
+
+        - some pod fix(by kan++)
+
 0.10
 
         - no feature changes

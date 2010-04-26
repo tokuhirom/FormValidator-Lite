@@ -17,6 +17,8 @@ rule 'DATE' => sub {
 sub _v {
     my ($y, $m, $d) = @_;
 
+    return 0 if ( !$y or !$m or !$d );
+
     if ($d > 31 or $d < 1 or $m > 12 or $m < 1 or $y == 0) {
         return 0;
     }

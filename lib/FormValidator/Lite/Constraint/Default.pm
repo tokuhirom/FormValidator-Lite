@@ -7,8 +7,8 @@ rule 'NOT_NULL' => sub {
     return 0 if ref($_)eq'ARRAY' && @$_ == 0;
     return 1;
 };
-rule 'INT'  => sub { $_ =~ /^[+\-]?[0-9]+$/ };
-rule 'UINT' => sub { $_ =~ /^[0-9]+$/      };
+rule 'INT'  => sub { $_ =~ /\A[+\-]?[0-9]+\z/ };
+rule 'UINT' => sub { $_ =~ /\A[0-9]+\z/      };
 alias 'NOT_NULL' => 'NOT_BLANK';
 
 rule 'ASCII' => sub {

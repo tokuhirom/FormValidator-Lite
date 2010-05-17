@@ -44,7 +44,7 @@ sub check {
             my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];
 
             my $is_ok = do {
-                if ((not defined $_) && $rule_name ne 'NOT_NULL') {
+                if ((not $_) && $rule_name ne 'NOT_NULL') {
                     1;
                 } else {
                     if (my $file_rule = $FileRules->{$rule_name}) {

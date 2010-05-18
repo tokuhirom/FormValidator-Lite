@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 21;
+plan tests => 23;
 
 filters {
     query    => [qw/eval/],
@@ -45,33 +45,37 @@ __END__
 )
 
 === INT
---- query: { hoge => '1', fuga => '-1', hoga => 'ascii'}
+--- query: { hoge => '1', fuga => '-1', hoga => 'ascii', foo => "1\n" }
 --- rule
 (
     hoge => [qw/INT/],
     fuga => [qw/INT/],
     hoga => [qw/INT/],
+    foo  => [qw/INT/],
 )
 --- expected
 (
     hoge => 0,
     fuga => 0,
     hoga => 1,
+    foo  => 1,
 )
 
 === UINT
---- query: { hoge => '1', fuga => '-1', hoga => 'ascii' }
+--- query: { hoge => '1', fuga => '-1', hoga => 'ascii', foo => "1\n" }
 --- rule
 (
     hoge => [qw/UINT/],
     fuga => [qw/UINT/],
     hoga => [qw/UINT/],
+    foo  => [qw/UINT/],
 )
 --- expected
 (
     hoge => 0,
     fuga => 1,
     hoga => 1,
+    foo  => 1,
 )
 
 === ASCII

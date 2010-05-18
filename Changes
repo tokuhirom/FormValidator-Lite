@@ -1,5 +1,10 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.12
+
+        - allow empty string parameter when NOT_NULL constraints is not set
+        - fixed regexp of INT, UINT constraints (fujiwara++)
+
 0.11
 
         - some pod fix(by kan++)

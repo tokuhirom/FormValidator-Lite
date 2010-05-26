@@ -88,3 +88,14 @@ __END__
     date => 0,
 )
 
+=== DATE with blank arg.
+--- query: { y => '', m => '', d => ''}
+--- rule
+(
+    {date => [qw/y m d/]} => ['DATE'],
+)
+--- expected
+(
+    date => 1,
+)
+

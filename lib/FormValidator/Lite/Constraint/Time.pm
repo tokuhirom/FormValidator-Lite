@@ -4,7 +4,7 @@ use FormValidator::Lite::Constraint;
 rule 'TIME' => sub {
     if ( ref $_) {
         # query: h=12&m=00&d=60
-        # rule:  {date => [qw/h m s/]} => ['TIME']
+        # rule:  {time => [qw/h m s/]} => ['TIME']
         _v(@{$_});
     } else {
         # query: time=12:00:30
@@ -46,12 +46,12 @@ This module provides date constraints.
 
     $validator = FormValidator::Lite->new(CGI->new("time=12:29:30"));
     $validator->check(
-        date => ['DATE']
+        time => ['TIME']
     );
     # or
     $validator = FormValidator::Lite->new(CGI->new("h=12&m=29&s=30"));
     $validator->check(
-        {date => [qw/y m d/]} => ['DATE']
+        {time => [qw/h m s/]} => ['TIME']
     );
 
 This constraints checks the parameter is valid date or not.

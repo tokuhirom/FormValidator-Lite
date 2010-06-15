@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.14
+
+        - fix: not ignore zero in regex constraint (bayashi++)
+
 0.13
 
         - suppress warnings(walf443)

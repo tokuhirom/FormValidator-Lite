@@ -27,7 +27,7 @@ use CGI;
     my $q = CGI->new(
         {
             foo => '1',
-            bar => '',
+            baz => '',
         },
     );
     my $v = FormValidator::Lite->new($q);

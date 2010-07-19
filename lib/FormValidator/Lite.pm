@@ -281,6 +281,8 @@ load constraint components named "FormValidator::Lite::Constraint::${name}".
 
 =item $validator->load_function_message($lang)
 
+    $validator->load_function_message('ja');
+
 Load function message file.
 
 Currently, FormValidator::Lite::Messages::ja and FormValidator::Lite::Messages::en are available.

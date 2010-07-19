@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.16
+
+        - $v->get_error_messages() should return arrayref in scalar context.
+
 0.15
 
         - no code changes. just re-submitting by pause permission issue

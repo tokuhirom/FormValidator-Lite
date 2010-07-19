@@ -141,7 +141,7 @@ sub get_error_messages {
         $dup_check{"$param.$func"}++;
     }
 
-    return @messages;
+    return wantarray ? @messages : \@messages;
 }
 
 # $validator->get_error_message('email', 'NOT_NULL');
@@ -318,7 +318,9 @@ Set error message for the $param and $func.
 
 =item my @errors = $validator->get_error_messages()
 
-Get whole error messages for $q in arrayref.
+=item my $errors = $validator->get_error_messages()
+
+Get whole error messages for $q in array/arrayref.
 
 =item my $msg = $validator->get_error_message($param => $func)
 

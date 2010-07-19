@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 1;
+use Test::More tests => 2;
 use FormValidator::Lite;
 use CGI;
 use YAML;
@@ -29,4 +29,6 @@ is_deeply([$v->get_error_messages], YAML::Load(<<'...'), 'order is assured');
 - ばずがひらがなじゃありません
 - 郵便番号をただしく入力してください
 ...
+
+is_deeply([$v->get_error_messages], scalar($v->get_error_messages), 'context');
 

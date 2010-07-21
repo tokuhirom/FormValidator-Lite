@@ -1,7 +1,10 @@
 use strict;
 use warnings;
 use FormValidator::Lite;
-use Test::Requires 'HTTP::Engine', 'HTTP::Engine::Request', 'HTTP::Request';
+use Test::Requires {
+    'HTTP::Engine' => '0.03004',
+};
+use Test::Requires 'HTTP::Engine::Interface::Test', 'HTTP::Engine::Request', 'HTTP::Request';
 use Test::More tests => 8;
 
 do {

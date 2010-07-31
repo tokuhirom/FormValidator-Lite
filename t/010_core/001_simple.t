@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 6;
+use Test::More tests => 7;
 use FormValidator::Lite;
 use CGI;
 
@@ -11,6 +11,7 @@ my $q = CGI->new(
 );
 my $v = FormValidator::Lite->new($q);
 ok(!$v->has_error);
+is($v->query, $q);
 $v->check(
     'foo' => [qw/NOT_NULL/],
     'baz' => [qw/NOT_NULL/],

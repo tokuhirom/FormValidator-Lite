@@ -7,6 +7,9 @@ use UNIVERSAL::require;
 use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
+use Class::Accessor::Lite;
+
+Class::Accessor::Lite->mk_accessors(qw/query/);
 
 our $VERSION = '0.17';
 
@@ -22,14 +25,14 @@ sub new {
     my ($class, $q) = @_;
     Carp::croak("Usage: ${class}->new(\$q)") unless $q;
 
-    bless { _q => $q, _error => {} }, $class;
+    bless { query => $q, _error => {} }, $class;
 }
 
 sub check {
     my ($self, @rule_ary) = @_;
     Carp::croak("this is instance method") unless ref $self;
 
-    my $q = $self->{_q};
+    my $q = $self->{query};
     while (my ($key, $rules) = splice(@rule_ary, 0, 2)) {
         local $_;
         if (ref $key) {
@@ -250,6 +253,12 @@ IT'S IN BETA QUALITY. API MAY CHANGE IN FUTURE.
 Create a new instance.
 
 $q is query like object, such as Apache::Request, CGI.pm, Plack::Request.
+
+=item $validator->query()
+
+=item $validator->query($query)
+
+Getter/Setter for query like object.
 
 =item $validator->check(@rule_ary)
 

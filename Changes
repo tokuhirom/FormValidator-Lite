@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.18
+
+        - added $v->query() accessor.
+
 0.17
 
         - (no feature changes)

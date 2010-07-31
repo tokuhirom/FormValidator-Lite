@@ -10,7 +10,7 @@ requires 'Class::Accessor::Lite';
 # > 2. Patch from Alexander Klink to select correct temporary directory in OSX Leopard so that upload works.
 requires 'CGI' => 3.31;
 
-test_requires 'Test::Requires' => 0.03;
+test_requires 'Test::Requires' => 0.05;
 
 recommends 'Email::Valid::Loose';
 

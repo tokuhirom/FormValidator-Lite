@@ -11,7 +11,7 @@ use Class::Accessor::Lite;
 
 Class::Accessor::Lite->mk_accessors(qw/query/);
 
-our $VERSION = '0.18';
+our $VERSION = '0.19';
 
 our $Rules;
 our $FileRules;

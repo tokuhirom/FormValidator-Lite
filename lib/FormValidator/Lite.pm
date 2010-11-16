@@ -195,7 +195,7 @@ sub get_error_messages_from_param {
         $dup_check{"$param.$func"}++;
     }
 
-    return @messages;
+    return wantarray ? @messages : \@messages;
 }
 
 1;

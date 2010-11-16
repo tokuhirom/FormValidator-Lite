@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.20
+
+    - get_error_messages_from_param use wantarray(nekokak).
+
 0.19
 
         - small doc tweaks

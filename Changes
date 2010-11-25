@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.21
+
+    - support Plack::Request::Upload(requested by lopnor++)
+
 0.20
 
     - get_error_messages_from_param use wantarray(nekokak).

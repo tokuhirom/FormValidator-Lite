@@ -27,6 +27,8 @@ sub new {
             'CGI';
         } elsif ($q->isa('HTTP::Engine::Request')) {
             'HTTPEngine';
+        } elsif ($q->isa('Plack::Request')) {
+            'PlackRequest';
         } else {
             if ($q->can('upload') && (my $u = $q->upload($name))) {
                 # this feature is needed by HTML::Shakan or other form validation libraries

@@ -1,5 +1,21 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.22
+
+    lots of tiny tweaks and bug fixes by tomi-ru++
+    * 5cd5c78 added FILTER (like D::F).
+    * b8e820b added errors() for accessor to $self->{_error}
+    * d9d9dbe added pod about import() style.
+    * 96ff6a4 bugfix: ""  and NOT_BLANK (or REQUIRED)
+    * b973dce fix pod typo
+    * 3e50418 added constraint MATCH for flexibility.
+    * c0393a8 added constraint EQUAL for simple match
+    * efb5ebf pod fix
+    * 3304d26 added constraint EMAIL
+    * 176c647 added constraint REQUIRED as alias to NOT_NULL
+    * ef36dbf added test for NOT_BLANK(alias)
+    * 6b46c81 added test for NOT_NULL and blank string
+
 0.21
 
     - support Plack::Request::Upload(requested by lopnor++)

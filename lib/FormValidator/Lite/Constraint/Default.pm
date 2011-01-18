@@ -10,6 +10,7 @@ rule 'NOT_NULL' => sub {
 rule 'INT'  => sub { $_ =~ /\A[+\-]?[0-9]+\z/ };
 rule 'UINT' => sub { $_ =~ /\A[0-9]+\z/      };
 alias 'NOT_NULL' => 'NOT_BLANK';
+alias 'NOT_NULL' => 'REQUIRED';
 
 rule 'ASCII' => sub {
     $_ =~ /^[\x21-\x7E]+$/
@@ -70,7 +71,7 @@ This module provides default constraint rules for L<FormValidator::Lite>.
 
 The parameter is true value or not.
 
-=item NOT_BLANK
+=item NOT_BLANK, REQUIRED
 
 Synonym of NOT_NULL.
 

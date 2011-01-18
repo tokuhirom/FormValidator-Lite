@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 24;
+plan tests => 25;
 
 filters {
     query    => [qw/eval/],
@@ -44,6 +44,17 @@ __END__
     hoge => 0,
     hoga => 1,
     fuga => 1,
+)
+
+=== NOT_BLANK
+--- query: { hoge => 1 }
+--- rule
+(
+    hoge => [qw/NOT_BLANK/],
+);
+--- expected
+(
+    hoge => 0,
 )
 
 === INT

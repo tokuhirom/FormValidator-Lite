@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 29;
+plan tests => 39;
 
 filters {
     query    => [qw/eval/],
@@ -32,40 +32,60 @@ run {
 __END__
 
 === NOT_NULL
---- query: { hoge => 1, hoga => "" }
+--- query: { hoge => 1, zero => 0, blank => "", undef => undef }
 --- rule
 (
-    hoge => [qw/NOT_NULL/],
-    hoga => [qw/NOT_NULL/],
-    fuga => [qw/NOT_NULL/],
+    hoge    => [qw/NOT_NULL/],
+    zero    => [qw/NOT_NULL/],
+    blank   => [qw/NOT_NULL/],
+    undef   => [qw/NOT_NULL/],
+    missing => [qw/NOT_NULL/],
 );
 --- expected
 (
-    hoge => 0,
-    hoga => 1,
-    fuga => 1,
+    hoge    => 0,
+    zero    => 0,
+    blank   => 1,
+    undef   => 1,
+    missing => 1,
 )
 
 === NOT_BLANK
---- query: { hoge => 1 }
+--- query: { hoge => 1, zero => 0, blank => "", undef => undef }
 --- rule
 (
-    hoge => [qw/NOT_BLANK/],
+    hoge    => [qw/NOT_BLANK/],
+    zero    => [qw/NOT_BLANK/],
+    blank   => [qw/NOT_BLANK/],
+    undef   => [qw/NOT_BLANK/],
+    missing => [qw/NOT_BLANK/],
 );
 --- expected
 (
-    hoge => 0,
+    hoge    => 0,
+    zero    => 0,
+    blank   => 1,
+    undef   => 1,
+    missing => 1,
 )
 
 === REQUIRED
---- query: { hoge => 1 }
+--- query: { hoge => 1, zero => 0, blank => "", undef => undef }
 --- rule
 (
-    hoge => [qw/REQUIRED/],
+    hoge    => [qw/REQUIRED/],
+    zero    => [qw/REQUIRED/],
+    blank   => [qw/REQUIRED/],
+    undef   => [qw/REQUIRED/],
+    missing => [qw/REQUIRED/],
 );
 --- expected
 (
-    hoge => 0,
+    hoge    => 0,
+    zero    => 0,
+    blank   => 1,
+    undef   => 1,
+    missing => 1,
 )
 
 === INT

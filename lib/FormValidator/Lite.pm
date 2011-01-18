@@ -89,6 +89,11 @@ sub set_error {
     push @{$self->{_error_ary}}, [$param, $rule_name];
 }
 
+sub errors {
+    my ($self) = @_;
+    $self->{_error};
+}
+
 sub load_constraints {
     my $class = shift;
     for (@_) {
@@ -283,6 +288,15 @@ This is same as !$validator->is_valid().
 =item $validator->set_error($param, $rule_name)
 
 Set new error to parameter named $param. The rule name is  $rule_name.
+
+=item $validator->errors()
+
+Return whole errors as HashRef.
+    
+    {
+        'foo' => { 'NOT_NULL' => 1, 'INT' => 1 },
+        'bar' => { 'EMAIL' => 1, },
+    }
 
 =item $validator->load_constraints($name)
 

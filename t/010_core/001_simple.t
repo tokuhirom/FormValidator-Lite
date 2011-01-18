@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Test::More tests => 8;
 use FormValidator::Lite;
 use CGI;
 
@@ -24,3 +24,15 @@ ok(!$v->is_error('boy'));
 $v->set_error('boy' => 'is_girl');
 ok($v->is_error('boy'));
 
+is_deeply(
+    $v->errors,
+    {
+        'baz' => {
+            'NOT_NULL' => 1
+        },
+        'boy' => {
+            'is_girl' => 1
+        },
+    },
+    'errors()',
+);

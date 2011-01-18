@@ -64,6 +64,31 @@ rule 'MATCH' => sub {
     $callback->($_);
 };
 
+our $Filters = {
+    trim => sub {
+        my $value = shift;
+        return $value unless $value;
+        $value =~ s/^\s+|\s+$//g;
+        $value;
+    },
+};
+
+rule 'FILTER' => sub {
+    my $filter = shift;
+    Carp::croak("missing \$filter") unless $filter;
+    
+    if (not ref $filter) {
+        $filter = $Filters->{$filter}
+            or Carp::croak("$filter is not defined.");
+    }
+    
+    Carp::croak("\$filter must be coderef.") if ref $filter ne 'CODE';
+    
+    $_ = $filter->($_);
+    
+    1; # always return true
+};
+
 1;
 __END__
 
@@ -162,6 +187,17 @@ The parameter is one of choice or not.
 
 Check parameter using callback. Callback takes parameter as first argument,
 should return true/false.
+
+=item FILTER
+
+    $validator->check(
+        foo => [[FILTER => 'trim'], 'INT'],
+        bar => [[FILTER => sub { $_[0] . '@example.com' } ], 'EMAIL'],
+    );
+
+FILTER is special constraint. It does not check the value and simply filter.
+"trim" is only pre-defined. You can also pass a callback.
+Callback takes parameter as first argument, should return filterd value.
 
 =back
 

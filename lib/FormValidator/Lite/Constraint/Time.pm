@@ -36,13 +36,13 @@ FormValidator::Lite::Constraint::Time - time constraints
 
 =head1 DESCRIPTION
 
-This module provides date constraints.
+This module provides time constraints.
 
 =head1 CONSTRAINTS
 
 =over 4
 
-=item DATE
+=item TIME
 
     $validator = FormValidator::Lite->new(CGI->new("time=12:29:30"));
     $validator->check(
@@ -54,7 +54,7 @@ This module provides date constraints.
         {time => [qw/h m s/]} => ['TIME']
     );
 
-This constraints checks the parameter is valid date or not.
+This constraints checks the parameter is valid time or not.
 
 =back
 

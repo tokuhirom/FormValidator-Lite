@@ -1,6 +1,11 @@
 package FormValidator::Lite::Constraint::Email;
 use FormValidator::Lite::Constraint;
+use Email::Valid;
 use Email::Valid::Loose;
+
+rule 'EMAIL' => sub {
+    Email::Valid->address($_);
+};
 
 rule 'EMAIL_LOOSE' => sub {
     Email::Valid::Loose->address($_);
@@ -17,13 +22,23 @@ FormValidator::Lite::Constraint::Email - E-Mail address validation
 
 =over 4
 
+=item EMAIL
+
+    $validator->check(
+        email => [qw/EMAIL/],
+    );
+
+Check the parameter is valid E-Mail address or not.
+
+This constraint uses L<Email::Valid>.
+
 =item EMAIL_LOOSE
 
     $validator->check(
         email => [qw/EMAIL_LOOSE/],
     );
 
-Check the parameter is valid E-Mail address or not.
+Check the parameter is valid E-Mail address or not. But allow some "loose" addresses.
 
 This constraint uses L<Email::Valid::Loose>.
 

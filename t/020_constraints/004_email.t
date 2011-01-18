@@ -4,11 +4,12 @@ use utf8;
 use Test::Base;
 use FormValidator::Lite;
 use CGI;
+use Test::Requires 'Email::Valid';
 use Test::Requires 'Email::Valid::Loose';
 
 FormValidator::Lite->load_constraints(qw/Email/);
 
-plan tests => 2;
+plan tests => 6;
 
 filters {
     query    => [qw/eval/],
@@ -34,16 +35,33 @@ run {
 
 __END__
 
-=== EMAIL_LOOSE
---- query: { p1 => 'http://example.com/', p2 => 'foobar@example.com', }
+=== EMAIL
+--- query: { p1 => 'http://example.com/', p2 => 'foobar@example.com', p3 => 'foo..bar.@example.com' }
 --- rule
 (
-    p1 => ['EMAIL_LOOSE'],
-    p2 => ['EMAIL_LOOSE'],
+    p1 => ['EMAIL'],
+    p2 => ['EMAIL'],
+    p3 => ['EMAIL'],
 );
 --- expected
 (
     p1 => 1,
     p2 => 0,
+    p3 => 1,
+)
+
+=== EMAIL_LOOSE
+--- query: { p1 => 'http://example.com/', p2 => 'foobar@example.com', p3 => 'foo..bar.@example.com' }
+--- rule
+(
+    p1 => ['EMAIL_LOOSE'],
+    p2 => ['EMAIL_LOOSE'],
+    p3 => ['EMAIL_LOOSE'],
+);
+--- expected
+(
+    p1 => 1,
+    p2 => 0,
+    p3 => 0,
 )
 

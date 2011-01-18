@@ -12,6 +12,7 @@ requires 'CGI' => 3.31;
 
 test_requires 'Test::Requires' => 0.05;
 
+recommends 'Email::Valid';
 recommends 'Email::Valid::Loose';
 
 tests('t/*.t t/*/*.t t/*/*/*.t');

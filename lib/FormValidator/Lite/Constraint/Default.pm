@@ -32,6 +32,11 @@ rule 'LENGTH' => sub {
     ( $min <= $length and $length <= $max )
 };
 
+rule 'EQUAL' => sub {
+    Carp::croak("missing \$argument") if @_ == 0;
+    $_ eq $_[0]
+};
+
 rule 'REGEX' => sub {
     my $regex = shift;
     Carp::croak("missing args at REGEX rule") unless defined $regex;
@@ -110,6 +115,14 @@ Synonym of DUPLICATION.
 
 Check the length of data. First argument means $minumum value, second argument is $max.
 $max is optional.
+
+=item EQUAL
+
+    $validator->check(
+        name => [[EQUAL => "foo"]],
+    );
+
+Check parameter match the argument or not.
 
 =item REGEX
 

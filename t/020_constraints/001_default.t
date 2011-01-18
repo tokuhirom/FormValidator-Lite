@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 26;
+plan tests => 28;
 
 filters {
     query    => [qw/eval/],
@@ -149,6 +149,19 @@ __END__
     x1 => 1,
     x2 => 0,
     x3 => 0,
+)
+
+=== EQUAL
+--- query: { 'z1' => 'foo', 'z2' => 'foo' }
+--- rule
+(
+    'z1' => [[EQUAL => 'foo']],
+    'z2' => [[EQUAL => 'bar']],
+)
+--- expected
+(
+    z1 => 0,
+    z2 => 1,
 )
 
 === REGEX

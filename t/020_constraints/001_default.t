@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 28;
+plan tests => 29;
 
 filters {
     query    => [qw/eval/],
@@ -175,5 +175,16 @@ __END__
 (
     z1 => 0,
     z2 => 1,
+)
+
+=== MATCH
+--- query: { 'z1' => 'ba3', 'z2' => 'bao' }
+--- rule
+(
+    z1 => [[MATCH => sub { $_[0] eq 'ba3' } ]],
+)
+--- expected
+(
+    z1 => 0,
 )
 

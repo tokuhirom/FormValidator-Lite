@@ -57,6 +57,13 @@ rule 'CHOICE' => sub {
     return 0;
 };
 
+rule 'MATCH' => sub {
+    my $callback = shift;
+    Carp::croak("missing \$callback") if ref $callback ne 'CODE';
+
+    $callback->($_);
+};
+
 1;
 __END__
 
@@ -143,6 +150,18 @@ Synonym of REGEX.
     );
 
 The parameter is one of choice or not.
+
+=item MATCH
+
+    use MyApp::Util qw/is_foo/;
+
+    $validator->check(
+        foo => [[MATCH => \&is_foo ]],
+        bar => [[MATCH => sub { $_[0] eq 'foo' } ]],
+    );
+
+Check parameter using callback. Callback takes parameter as first argument,
+should return true/false.
 
 =back
 

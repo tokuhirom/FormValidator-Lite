@@ -286,10 +286,10 @@ Set new error to parameter named $param. The rule name is  $rule_name.
 
 =item $validator->load_constraints($name)
 
-    $validator->load_function_message("DATE");
+    $validator->load_constraints("DATE");
 
     # or load your own constraints
-    $validator->load_function_message("+MyApp::FormValidator::Lite::Constraint");
+    $validator->load_constraints("+MyApp::FormValidator::Lite::Constraint");
 
 load constraint components named "FormValidator::Lite::Constraint::${name}".
 

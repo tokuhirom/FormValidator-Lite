@@ -7,9 +7,9 @@ use UNIVERSAL::require;
 use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
-use Class::Accessor::Lite;
-
-Class::Accessor::Lite->mk_accessors(qw/query/);
+use Class::Accessor::Lite 0.05 (
+    rw => [qw/query/]
+);
 
 our $VERSION = '0.21';
 

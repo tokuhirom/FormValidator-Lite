@@ -258,6 +258,7 @@ IT'S IN BETA QUALITY. API MAY CHANGE IN FUTURE.
 Create a new instance.
 
 $q is query like object, such as Apache::Request, CGI.pm, Plack::Request.
+The object MUST have a C<< $q->parma >> method.
 
 =item $validator->query()
 
@@ -267,27 +268,34 @@ Getter/Setter for query like object.
 
 =item $validator->check(@rule_ary)
 
-This method do validation.
+    my $res = $validator->check(
+        name      => [qw/NOT_NULL/],
+        name_kana => [qw/NOT_NULL KATAKANA/],
+        {mails => [qw/mail1 mail2/]} => ['DUPLICATION'],
+    );
+
+This method do validation. You can write a rule in C<< @rule_ary >>. In above example code, I<name>
+is a parameter name, I<NOT_NULL>, I<KATAKANA> and I<DUPLICATION> are name of constraints.
 
 =item $validator->is_error($key)
 
-Return true value if parameter named $key got error.
+Return true value if parameter named C<< $key >> got error.
 
 =item $validator->is_valid()
 
-Return true value if $validator don't detects error.
+Return true value if C<< $validator >> don't detects error.
 
-This is same as !$validator->has_error().
+This is same as C<< !$validator->has_error() >>.
 
 =item $validator->has_error()
 
-Return true value if $validator detects error.
+Return true value if C<< $validator >> detects error.
 
-This is same as !$validator->is_valid().
+This is same as C<< !$validator->is_valid() >>.
 
 =item $validator->set_error($param, $rule_name)
 
-Set new error to parameter named $param. The rule name is  $rule_name.
+Set new error to parameter named C<<$param>>. The rule name is C<<$rule_name>>.
 
 =item $validator->errors()
 
@@ -309,7 +317,7 @@ There is a import style.
 
     use FormValidator::Lite qw/Date Email/;
 
-load constraint components named "FormValidator::Lite::Constraint::${name}".
+load constraint components named C<< "FormValidator::Lite::Constraint::${name}" >>.
 
 =item $validator->load_function_message($lang)
 

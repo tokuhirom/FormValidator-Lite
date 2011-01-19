@@ -29,6 +29,7 @@ FormValidator::Lite::Constraint::Email - E-Mail address validation
     );
 
 Check the parameter is valid E-Mail address or not.
+If you are Japanese programmer, you would use EMAIL_LOOSE instead.
 
 This constraint uses L<Email::Valid>.
 

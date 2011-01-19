@@ -325,7 +325,7 @@ load constraint components named C<< "FormValidator::Lite::Constraint::${name}" 
 
 Load function message file.
 
-Currently, FormValidator::Lite::Messages::ja and FormValidator::Lite::Messages::en are available.
+Currently, L<FormValidator::Lite::Messages::ja> and L<FormValidator::Lite::Messages::en> are available.
 
 =item $validator->set_param_message($param => $message, ...)
     
@@ -360,7 +360,8 @@ Set error message for the $param and $func.
 
 =item my $errors = $validator->get_error_messages()
 
-Get whole error messages for $q in array/arrayref.
+Get whole error messages for C<<$q>> in array/arrayref.
+This method returns array in list context, otherwise HashRef.
 
 =item my $msg = $validator->get_error_message($param => $func)
 
@@ -395,6 +396,8 @@ Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
 craftworks
 
 nekokak
+
+tomi-ru
 
 =head1 SEE ALSO
 

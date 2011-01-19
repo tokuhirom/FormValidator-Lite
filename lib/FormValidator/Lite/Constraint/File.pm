@@ -49,7 +49,7 @@ Check the file content-type.
         'file' => [['FILE_SIZE', 1_000_000, 100]],
     );
 
-Check the file size.First argument is $max, and second is $min.
+Check the file size. First argument is the upper limit in bytes, and second is lower limit in bytes.
 Second argument is optional.
 
 =back

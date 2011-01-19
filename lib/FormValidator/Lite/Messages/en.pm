@@ -17,3 +17,8 @@ __END__
 
 FormValidator::Lite::Messages::ja - English language resource
 
+=head1 DESCRIPTION
+
+This module provides Japanese message set for L<FormValidator::Lite>.
+
+

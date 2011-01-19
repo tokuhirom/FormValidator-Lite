@@ -14,6 +14,10 @@ __END__
 
 FormValidator::Lite::Constraint::URL - is this valid URL?
 
+=head1 DESCRIPTION
+
+This module provides some URL related constraints for L<FormValidator::Lite>.
+
 =head1 CONSTRAINTS
 
 =over 4

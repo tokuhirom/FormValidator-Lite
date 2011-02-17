@@ -46,12 +46,14 @@ sub check {
             my $rule_name = ref($rule) ? $rule->[0]                        : $rule;
             my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];
 
+            if ($FileRules->{$rule_name}) {
+                $_ = FormValidator::Lite::Upload->new($q, $key);
+            }
             my $is_ok = do {
                 if ((not (defined $_ && length $_)) && $rule_name !~ /^(NOT_NULL|NOT_BLANK|REQUIRED)$/) {
                     1;
                 } else {
                     if (my $file_rule = $FileRules->{$rule_name}) {
-                        local $_ = FormValidator::Lite::Upload->new($q, $key);
                         $file_rule->(@$args) ? 1 : 0;
                     } else {
                         my $code = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");

@@ -1,5 +1,12 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.23
+
+    - better plack support for FILE_MIME/FILE_SIZE
+      https://github.com/tokuhirom/formvalidator-lite-perl/issues/3#issue/3
+      (tomi-ru++)
+    - doc tweaks(tokuhirom)
+
 0.22
 
     lots of tiny tweaks and bug fixes by tomi-ru++

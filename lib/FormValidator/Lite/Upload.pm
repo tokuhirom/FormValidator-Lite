@@ -30,9 +30,9 @@ sub new {
         } elsif ($q->isa('Plack::Request')) {
             'PlackRequest';
         } else {
-            if ($q->can('upload') && (my $u = $q->upload($name))) {
+            if ($q->can('upload')){
                 # this feature is needed by HTML::Shakan or other form validation libraries
-                return $u; # special case :)
+                return $q->upload($name); # special case :)
             } else {
                 die "unknown request type: $q";
             }

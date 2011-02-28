@@ -197,7 +197,7 @@ should return true/false.
 
 FILTER is special constraint. It does not check the value and simply filter.
 "trim" is only pre-defined. You can also pass a callback.
-Callback takes parameter as first argument, should return filterd value.
+Callback takes parameter as first argument, should return filtered value.
 
 =back
 

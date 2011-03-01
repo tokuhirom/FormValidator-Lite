@@ -30,7 +30,7 @@ sub new {
         } elsif ($q->isa('Plack::Request')) {
             'PlackRequest';
         } else {
-            if ($q->can('upload')){
+            if ($q->can('upload')){ # duck typing
                 # this feature is needed by HTML::Shakan or other form validation libraries
                 return $q->upload($name); # special case :)
             } else {

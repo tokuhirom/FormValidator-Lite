@@ -1,5 +1,10 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.24
+
+    - fixed HTML::Shakan integration. It is broken from 0.23.
+      (ysasaki)
+
 0.23
 
     - better plack support for FILE_MIME/FILE_SIZE

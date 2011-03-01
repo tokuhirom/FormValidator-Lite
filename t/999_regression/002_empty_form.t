@@ -1,7 +1,6 @@
 use strict;
 use warnings;
 use Test::More;
-use Test::Exception;
 use Test::Requires {
     'HTML::Shakan'   => 0.09,
     'HTTP::Request'  => 0,
@@ -28,7 +27,8 @@ subtest 'Plack::Request' => sub {
     note "Plack::Request $Plack::Request::VERSION";
     my $app = sub {
         my $env = shift;
-        lives_ok { form( Plack::Request->new($env) ) };
+        eval { form( Plack::Request->new($env) ) };
+        ok(!$@, "lives ok") or diag $@;
         [ 200, [ 'Content-Type' => 'text/plain' ], ['OK'] ];
     };
     test_psgi $app, sub {
@@ -39,7 +39,8 @@ subtest 'Plack::Request' => sub {
 
 subtest 'CGI' => sub {
     note "CGI $CGI::VERSION";
-    lives_ok { form( CGI->new ) };
+    eval { form( CGI->new ) } or diag $@;
+    ok(!$@, "lives ok") or diag $@;
 };
 
 done_testing;

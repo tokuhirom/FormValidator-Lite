@@ -27,3 +27,8 @@ UINT
 JTEL
 JZIP
 DUP
+tomi
+ru
+Callback
+callback
+pre

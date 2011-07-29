@@ -1,7 +1,10 @@
 use strict;
 use warnings;
 use FormValidator::Lite;
-use Test::Requires 'Plack::Request', 'Plack::Request::Upload';
+use Test::Requires {
+    'Plack::Request'         => 0.9979,
+};
+use Test::Requires 'Plack::Request::Upload';
 use Test::More tests => 3;
 
 # Copied from CGI.pm - http://search.cpan.org/perldoc?CGI

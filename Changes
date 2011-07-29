@@ -1,5 +1,10 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.25
+
+    - fixed testing issue, maybe.
+      http://www.cpantesters.org/cpan/report/06a2f8f5-795b-1014-89f0-d9a4bbd4963b
+
 0.24
 
     - fixed HTML::Shakan integration. It is broken from 0.23.

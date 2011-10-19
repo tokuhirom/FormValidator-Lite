@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.26
+
+    - switch to M::B
+
 0.25
 
     - fixed testing issue, maybe.

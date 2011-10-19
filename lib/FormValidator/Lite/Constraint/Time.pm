@@ -1,4 +1,6 @@
 package  FormValidator::Lite::Constraint::Time;
+use strict;
+use warnings;
 use FormValidator::Lite::Constraint;
 
 rule 'TIME' => sub {

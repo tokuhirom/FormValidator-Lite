@@ -1,4 +1,6 @@
 package FormValidator::Lite::Constraint::File;
+use strict;
+use warnings;
 use FormValidator::Lite::Constraint;
 use Carp ();
 

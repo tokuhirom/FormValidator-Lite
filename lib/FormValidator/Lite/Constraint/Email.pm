@@ -1,4 +1,6 @@
 package FormValidator::Lite::Constraint::Email;
+use strict;
+use warnings;
 use FormValidator::Lite::Constraint;
 use Email::Valid;
 use Email::Valid::Loose;

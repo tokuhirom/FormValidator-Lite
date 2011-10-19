@@ -1,4 +1,6 @@
 package FormValidator::Lite::Constraint::Japanese;
+use strict;
+use warnings;
 use FormValidator::Lite::Constraint;
 
 rule 'HIRAGANA' => sub { delsp($_) =~ /^\p{InHiragana}+$/  };

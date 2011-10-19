@@ -391,7 +391,7 @@ FormValidator::Lite is fast!
 
 =head1 AUTHOR
 
-Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
+Tokuhiro Matsuno E<lt>tokuhirom AAJKLFJEF@ gmail.comE<gt>
 
 =head1 THANKS TO
 

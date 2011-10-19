@@ -1,4 +1,6 @@
 package FormValidator::Lite::Constraint::Default;
+use strict;
+use warnings;
 use FormValidator::Lite::Constraint;
 
 rule 'NOT_NULL' => sub {

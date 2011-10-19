@@ -1,8 +1,13 @@
 use strict;
 use Test::More;
-eval {
-    require Test::Perl::Critic;
-    Test::Perl::Critic->import( -profile => 'xt/perlcriticrc');
+eval q{
+    use Test::Perl::Critic 1.02 -exclude => [
+        'Subroutines::ProhibitSubroutinePrototypes',
+        'Subroutines::ProhibitExplicitReturnUndef',
+        'TestingAndDebugging::ProhibitNoStrict',
+        'ControlStructures::ProhibitMutatingListFunctions',
+        'InputOutput::RequireEncodingWithUTF8Layer',
+    ]
 };
-plan skip_all => "Test::Perl::Critic is not installed." if $@;
+plan skip_all => "Test::Perl::Critic 1.02+ is not installed." if $@;
 all_critic_ok('lib');

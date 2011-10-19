@@ -1,4 +1,6 @@
 package FormValidator::Lite::Constraint::URL;
+use strict;
+use warnings;
 use FormValidator::Lite::Constraint;
 
 # this regexp is taken from http://www.din.or.jp/~ohzaki/perl.htm#httpURL

@@ -1,4 +1,6 @@
 package FormValidator::Lite::Constraint::Date;
+use strict;
+use warnings;
 use FormValidator::Lite::Constraint;
 
 rule 'DATE' => sub {

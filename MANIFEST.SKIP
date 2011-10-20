@@ -36,3 +36,4 @@ perltidy.ERR$
 \.bak$
 ^FormValidator-Lite-
 ^inc/
+^[^/]+\.gz$

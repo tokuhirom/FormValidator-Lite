@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.28
+
+    - fixed deps
+
 0.27
 
     - fixed deps

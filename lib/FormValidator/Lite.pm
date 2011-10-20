@@ -11,7 +11,7 @@ use Class::Accessor::Lite 0.05 (
     rw => [qw/query/]
 );
 
-our $VERSION = '0.27';
+our $VERSION = '0.28';
 
 our $Rules;
 our $FileRules;

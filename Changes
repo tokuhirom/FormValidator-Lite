@@ -1,5 +1,9 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.29
+
+    - use Class::Load instead of UNIVERSAL::require.(requested by thirano++)
+
 0.28
 
     - fixed deps

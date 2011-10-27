@@ -3,13 +3,13 @@ use strict;
 use warnings;
 use 5.008_001;
 use Carp ();
-use UNIVERSAL::require;
 use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 use Class::Accessor::Lite 0.05 (
     rw => [qw/query/]
 );
+use Class::Load ();
 
 our $VERSION = '0.28';
 
@@ -101,14 +101,14 @@ sub load_constraints {
     for (@_) {
         my $constraint = $_;
         $constraint = ($constraint =~ s/^\+//) ? $constraint : "FormValidator::Lite::Constraint::${constraint}";
-        $constraint->use or die $@;
+        Class::Load::load_class($constraint);
     }
 }
 
 sub load_function_message {
     my ($self, $lang) = @_;
     my $pkg = "FormValidator::Lite::Messages::$lang";
-    $pkg->require or die $@;
+    Class::Load::load_class($pkg);
 
     no strict 'refs';
     $self->{_msg}->{function} = ${"${pkg}::MESSAGES"};

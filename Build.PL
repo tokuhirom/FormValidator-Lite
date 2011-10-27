@@ -17,7 +17,7 @@ my $build = Module::Build->new(
         'perl'                  => '5.008001',
         'Scalar::Util'          => '1.19',
         'Filter::Util::Call'    => '0',
-        'UNIVERSAL::require'    => '0.11',
+        'Class::Load'           => '0.11',
         'Class::Accessor::Lite' => '0.05',
         'CGI'                   => '3.31'
     },

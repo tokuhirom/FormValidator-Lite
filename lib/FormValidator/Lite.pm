@@ -34,35 +34,40 @@ sub check {
 
     my $q = $self->{query};
     while (my ($key, $rules) = splice(@rule_ary, 0, 2)) {
-        local $_;
+        my @values;
         if (ref $key) {
             $key = [%$key];
-            $_ = [ map { $q->param($_) } @{ $key->[1] } ];
+            @values = [ map { $q->param($_) } @{ $key->[1] } ];
             $key = $key->[0];
         } else {
-            $_ = $q->param($key);
+            @values = $q->param($key);
+            push @values, undef if not @values;
         }
-        for my $rule (@$rules) {
-            my $rule_name = ref($rule) ? $rule->[0]                        : $rule;
-            my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];
+        for my $value (@values) {
+            local $_ = $value;
+            my @errors;
+            for my $rule (@$rules) {
+                my $rule_name = ref($rule) ? $rule->[0]                        : $rule;
+                my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];
 
-            if ($FileRules->{$rule_name}) {
-                $_ = FormValidator::Lite::Upload->new($q, $key);
-            }
-            my $is_ok = do {
-                if ((not (defined $_ && length $_)) && $rule_name !~ /^(NOT_NULL|NOT_BLANK|REQUIRED)$/) {
-                    1;
-                } else {
-                    if (my $file_rule = $FileRules->{$rule_name}) {
-                        $file_rule->(@$args) ? 1 : 0;
-                    } else {
-                        my $code = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");
-                        $code->(@$args) ? 1 : 0;
-                    }
+                if ($FileRules->{$rule_name}) {
+                    $_ = FormValidator::Lite::Upload->new($q, $key);
                 }
-            };
-            if ($is_ok==0) {
-                $self->set_error($key => $rule_name);
+                my $is_ok = do {
+                    if ((not (defined $_ && length $_)) && $rule_name !~ /^(NOT_NULL|NOT_BLANK|REQUIRED)$/) {
+                        1;
+                    } else {
+                        if (my $file_rule = $FileRules->{$rule_name}) {
+                            $file_rule->(@$args) ? 1 : 0;
+                        } else {
+                            my $code = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");
+                            $code->(@$args) ? 1 : 0;
+                        }
+                    }
+                };
+                if ($is_ok==0) {
+                    $self->set_error($key => $rule_name);
+                }
             }
         }
     }

@@ -221,8 +221,8 @@ __END__
     bar => 0,
 )
 
-=== FILTER
---- query: { 'foo' => [' 123 ', ' 234 '], 'bar' => [qw(one one)] }
+=== FILTER (with multiple values)
+--- query: { 'foo' => [' 0 ', ' 123 ', ' 234 '], 'bar' => [qw(one one)] }
 --- rule
 (
     foo => [[FILTER => 'trim'], 'INT'],

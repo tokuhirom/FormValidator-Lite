@@ -1,30 +1,54 @@
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 13;
 use FormValidator::Lite;
 use CGI;
 
 {
+    # Optional parameter foo has multiple empty string values
     my $q = CGI->new(
         {
-            foo => ['bar', 'hoge'],
+            foo => ['', ''],
         },
     );
     my $v = FormValidator::Lite->new($q);
     ok(!$v->has_error);
     is($v->query, $q);
     $v->check(
-        'foo' => [qw/NOT_NULL/],
-        'baz' => [qw/NOT_NULL/],
+        'foo' => [
+            [CHOICE => qw/hoge fuga/],
+        ],
     );
-    ok($v->has_error);
-    ok(!$v->is_error('foo'));
-    ok($v->is_error('baz'), 'baz');
+    ok(!$v->has_error);
 };
 {
+    # Optional parameter foo has multiple zeros and check against ''
     my $q = CGI->new(
         {
-            foo => [qw(3 1)],
+            foo => [qw/0 0/],
+        },
+    );
+    my $v = FormValidator::Lite->new($q);
+    ok(!$v->has_error);
+    $v->check(
+        'foo' => [
+            [CHOICE => '']
+        ],
+    );
+    ok($v->has_error);
+    is_deeply($v->errors, {
+        foo => {
+            CHOICE => 2,
+        }
+    });
+};
+{
+    # Detect required param foo is not null,
+    # first and second items are valid,
+    # and third item is invalid
+    my $q = CGI->new(
+        {
+            foo => [qw(0 1 3)],
         },
     );
     my $v = FormValidator::Lite->new($q);
@@ -33,7 +57,7 @@ use CGI;
     $v->check(
         'foo' => [
             'NOT_NULL',
-            [CHOICE => qw/1 2/],
+            [CHOICE => qw/0 1 2/],
         ],
     );
     ok($v->has_error);
@@ -45,16 +69,17 @@ use CGI;
     });
 };
 {
+    # Detect all items in foo are valid
     my $q = CGI->new(
         {
-            foo => [qw(3 1)],
+            foo => [qw(0 1 3)],
         },
     );
     my $v = FormValidator::Lite->new($q);
     $v->check(
         foo => [
             'NOT_NULL',
-            [CHOICE => qw/1 2 3/],
+            [CHOICE => qw/0 1 2 3/],
         ],
     );
     ok(!$v->has_error);

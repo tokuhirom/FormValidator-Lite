@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 41;
+plan tests => 43;
 
 filters {
     query    => [qw/eval/],
@@ -221,3 +221,15 @@ __END__
     bar => 0,
 )
 
+=== FILTER (with multiple values)
+--- query: { 'foo' => [' 0 ', ' 123 ', ' 234 '], 'bar' => [qw(one one)] }
+--- rule
+(
+    foo => [[FILTER => 'trim'], 'INT'],
+    bar => [[FILTER => sub { my $v = shift; $v =~ s/one/1/; $v } ], 'INT'],
+)
+--- expected
+(
+    foo => 0,
+    bar => 0,
+)

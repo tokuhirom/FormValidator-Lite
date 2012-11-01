@@ -40,12 +40,10 @@ sub check {
             @values = [ map { $q->param($_) } @{ $key->[1] } ];
             $key = $key->[0];
         } else {
-            @values = $q->param($key);
-            push @values, undef if not @values;
+            @values = defined $q->param($key) ? $q->param($key) : undef;
         }
         for my $value (@values) {
             local $_ = $value;
-            my @errors;
             for my $rule (@$rules) {
                 my $rule_name = ref($rule) ? $rule->[0]                        : $rule;
                 my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];

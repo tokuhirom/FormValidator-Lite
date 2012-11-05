@@ -1,25 +1,24 @@
 use strict;
 use warnings;
 use utf8;
-use Test::Base;
+use Test::Base::Less;
 use FormValidator::Lite 'File';
 use CGI;
-
-plan tests => 1*blocks;
 
 filters {
     input => [qw/eval/],
     rule => [qw/eval/],
 };
 
-run {
-    my $block = shift;
+for my $block (blocks) {
     my $v = FormValidator::Lite->new(CGI->new($block->input));
     $v->check(
         f => $block->rule
     );
     is($v->has_error, $block->expected, $block->name);
-};
+}
+
+done_testing;
 
 __END__
 

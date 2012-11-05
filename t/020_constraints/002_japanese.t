@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::Base;
+use Test::Base::Less;
 use FormValidator::Lite qw/Japanese/;
 use CGI;
 
@@ -13,8 +13,7 @@ filters {
     expected => [qw/eval/],
 };
 
-run {
-    my $block = shift;
+for my $block (blocks) {
     my $q = CGI->new($block->query);
 
     my $v = FormValidator::Lite->new($q);
@@ -26,8 +25,9 @@ run {
     while (my ($key, $val) = splice(@expected, 0, 2)) {
         is($v->is_error($key), $val, $block->name);
     }
-};
+}
 
+done_testing;
 
 __END__
 

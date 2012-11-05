@@ -1,11 +1,9 @@
 use strict;
 use warnings;
 use utf8;
-use Test::Base;
+use Test::Base::Less;
 use FormValidator::Lite 'File';
 use CGI;
-
-plan tests => 1*blocks;
 
 # Copied from CGI.pm - http://search.cpan.org/perldoc?CGI
 %ENV = (
@@ -44,15 +42,15 @@ my $q = do {
     CGI->new;
 };
 
-run {
-    my $block = shift;
+for my $block (blocks) {
     my $v = FormValidator::Lite->new($q);
     $v->check(
         hello_world => [eval $block->input]
     );
     die $@ if $@;
     is($v->has_error, $block->expected, $block->input);
-};
+}
+done_testing;
 
 __END__
 

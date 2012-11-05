@@ -5,8 +5,6 @@ use Test::Base::Less;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 43;
-
 filters {
     query    => [qw/eval/],
     rule     => [qw/eval/],

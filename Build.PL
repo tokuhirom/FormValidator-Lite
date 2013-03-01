@@ -19,6 +19,7 @@ my $build = Module::Build->new(
         'Filter::Util::Call'    => '0',
         'Class::Load'           => '0.11',
         'Class::Accessor::Lite' => '0.05',
+        'Email::Valid::Loose'   => 0,
         'CGI'                   => '3.31'
     },
     no_index    => { 'directory' => [ 't', 'inc' ] },

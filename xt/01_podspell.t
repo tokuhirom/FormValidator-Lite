@@ -32,3 +32,5 @@ ru
 Callback
 callback
 pre
+declaratively
+API

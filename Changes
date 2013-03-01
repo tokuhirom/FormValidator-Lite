@@ -1,5 +1,14 @@
 Revision history for Perl extension FormValidator::Lite
 
+0.32
+
+    - Fixed sysnopsis
+      https://rt.cpan.org/Ticket/Display.html?id=83679
+      (Reported by deflexor++)
+    - Fixed dependencies
+      https://rt.cpan.org/Ticket/Display.html?id=83709
+      (Reported by deflexor++)
+
 0.31
 
     - support multivalued parameters(yowkow)

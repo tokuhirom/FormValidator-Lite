@@ -195,6 +195,36 @@ __END__
     z2 => 1,
 )
 
+=== CHOICE
+--- query: { 'z1' => 'foo', 'z2' => 'quux' }
+--- rule
+(
+    z1 => [ ['CHOICE' => [qw/foo bar baz/]] ],
+    z2 => [ ['IN'     => [qw/foo bar baz/]] ],
+)
+--- expected
+(
+    z1 => 0,
+    z2 => 1,
+)
+
+=== NOT_IN
+--- query: { 'z1' => 'foo', 'z2' => 'quux', z3 => 'hoge', z4 => 'eee' }
+--- rule
+(
+    z1 => [ ['NOT_IN', [qw/foo bar baz/]] ],
+    z2 => [ ['NOT_IN', [qw/foo bar baz/]] ],
+    z3 => [ ['NOT_IN', []] ],
+    z4 => [ ['NOT_IN'] ],
+)
+--- expected
+(
+    z1 => 1,
+    z2 => 0,
+    z3 => 0,
+    z4 => 0,
+)
+
 === MATCH
 --- query: { 'z1' => 'ba3', 'z2' => 'bao' }
 --- rule

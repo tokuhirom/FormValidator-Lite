@@ -252,8 +252,37 @@ IT'S IN BETA QUALITY. API MAY CHANGE IN THE FUTURE.
 
 =head1 HOW TO WRITE YOUR OWN CONSTRAINTS
 
-    http parameter comes from $_
-    validator args comes from @_
+Create your own package as such :
+
+    package MyApp::Validator::Constraint;
+    use strict;
+    use warnings;
+    use FormValidator::Lite::Constraint;
+    
+    rule 'IS_EVEN' => sub {
+        return $_ % 2 ? 0 : 1;
+    };
+    
+    rule 'IS_GREATER_THAN' => sub {
+        return $_ >= $_[0];
+    }
+    alias 'IS_GREATER_THAN' => 'IS_BIGGER_THAN';
+    
+    1;
+
+And in your controller :
+
+    use FormValidator::Lite qw("+MyApp::Validator::Constraint");
+    
+    my $validator = FormValidator::Lite->new(...);
+    $validator->set_message_data(...);
+    $validator->check(
+        some_param => [ 'UINT', 'IS_EVEN', ['IS_GREATER_THAN' => 42] ],
+    );
+
+When defining a rule keep in mind that the name of the parameter comes from
+C<< $_ >> and the additional arguments defined in your validation
+specifications come from C<< @_ >>.
 
 =head1 METHODS
 

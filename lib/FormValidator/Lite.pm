@@ -141,7 +141,7 @@ sub set_message {
 
 sub get_error_messages {
     my $self = shift;
-    Carp::croak("message doesn't loaded yet") unless $self->{_msg};
+    Carp::croak("No messages loaded yet") unless $self->{_msg};
 
     my %dup_check;
     my @messages;
@@ -230,14 +230,14 @@ FormValidator::Lite - lightweight form validation library
         name_kana => [qw/NOT_NULL KATAKANA/],
         {mails => [qw/mail1 mail2/]} => ['DUPLICATION'],
     );
-    if ( ..... return_true_when_if_error() ..... ) {
+    if ( ..... return_true_if_error() ..... ) {
         $validator->set_error('login_id' => 'DUPLICATION');
     }
     if ($validator->has_error) {
         ...
     }
 
-    # in your tmpl
+    # in your template
     <ul>
     ? for my $msg ($validator->get_error_messages) {
         <li><?= $msg ?></li>
@@ -246,9 +246,9 @@ FormValidator::Lite - lightweight form validation library
 
 =head1 DESCRIPTION
 
-FormValidator::Lite is simple, fast implementation for form validation.
+FormValidator::Lite is a simple, fast implementation for form validation.
 
-IT'S IN BETA QUALITY. API MAY CHANGE IN FUTURE.
+IT'S IN BETA QUALITY. API MAY CHANGE IN THE FUTURE.
 
 =head1 HOW TO WRITE YOUR OWN CONSTRAINTS
 
@@ -263,14 +263,14 @@ IT'S IN BETA QUALITY. API MAY CHANGE IN FUTURE.
 
 Create a new instance.
 
-$q is query like object, such as Apache::Request, CGI.pm, Plack::Request.
+C<<$q>> is a query-like object such as Apache::Request, CGI.pm, Plack::Request.
 The object MUST have a C<< $q->param >> method.
 
 =item $validator->query()
 
 =item $validator->query($query)
 
-Getter/Setter for query like object.
+Getter/Setter for the query object.
 
 =item $validator->check(@rule_ary)
 
@@ -280,32 +280,35 @@ Getter/Setter for query like object.
         {mails => [qw/mail1 mail2/]} => ['DUPLICATION'],
     );
 
-This method do validation. You can write a rule in C<< @rule_ary >>. In above example code, I<name>
-is a parameter name, I<NOT_NULL>, I<KATAKANA> and I<DUPLICATION> are name of constraints.
+This method does the validation. You can write a rule in C<< @rule_ary >>. In
+the example code above, I<name> is a parameter name, I<NOT_NULL>, I<KATAKANA> and
+I<DUPLICATION> are the names of the constraints.
 
 =item $validator->is_error($key)
 
-Return true value if parameter named C<< $key >> got error.
+Return true value if there is an error for the C<< $key >> parameter.
 
 =item $validator->is_valid()
 
-Return true value if C<< $validator >> don't detects error.
+Return true value if C<< $validator >> didn't detect any error.
 
-This is same as C<< !$validator->has_error() >>.
+This is the same as C<< !$validator->has_error() >>.
 
 =item $validator->has_error()
 
 Return true value if C<< $validator >> detects error.
 
-This is same as C<< !$validator->is_valid() >>.
+This is the same as C<< !$validator->is_valid() >>.
 
 =item $validator->set_error($param, $rule_name)
 
-Set new error to parameter named C<<$param>>. The rule name is C<<$rule_name>>.
+Manually set a new error to the parameter named C<<$param>>. The rule's name
+is C<<$rule_name>>.
 
 =item $validator->errors()
 
-Return whole errors as HashRef.
+Return all the errors as a hash reference where the keys are the problematic
+parameters and the values are a hash reference with the failed constraints.
     
     {
         'foo' => { 'NOT_NULL' => 1, 'INT' => 1 },
@@ -319,7 +322,7 @@ Return whole errors as HashRef.
     # or load your own constraints
     $validator->load_constraints("+MyApp::FormValidator::Lite::Constraint");
 
-There is a import style.
+There is an import style.
 
     use FormValidator::Lite qw/Date Email/;
 
@@ -339,7 +342,13 @@ Currently, L<FormValidator::Lite::Messages::ja> and L<FormValidator::Lite::Messa
         name => 'Your Name',
     );
 
-Make relational map for the parameter name to human readable name.
+Add a message-friendly description for the parameter.
+
+=item $validator->set_message("$param.$func" => $message)
+
+    $v->set_message('zip.jzip' => 'Please input correct zip number.');
+
+Set an error message for a given $param and $func pair.
 
 =item $validator->set_message_data({ message => $msg, param => $param, function => $function })
 
@@ -354,28 +363,27 @@ Make relational map for the parameter name to human readable name.
       hiragana: "[_1] is not Hiragana"
     ...
 
-Setup error message map.
+Set the error message map. In the 'function' and 'message' sections,
+C<< [_1] >> will be replaced with the description of the failing parameter
+provided in the 'param' section.
 
-=item $validator->set_message("$param.$func" => $message)
-
-    $v->set_message('zip.jzip' => 'Please input correct zip number.');
-
-Set error message for the $param and $func.
+Note that it will nullify any previous calls to
+C<< load_function_message >>, C<< set_message >> or C<< set_param_message >>.
 
 =item my @errors = $validator->get_error_messages()
 
 =item my $errors = $validator->get_error_messages()
 
-Get whole error messages for C<<$q>> in array/arrayref.
-This method returns array in list context, otherwise HashRef.
+Get all the error messages for C<<$q>> in array/arrayref.
+This method returns an array in list context and an array reference otherwise.
 
 =item my $msg = $validator->get_error_message($param => $func)
 
-Generate error message for parameter $param and function named $func.
+Generate the error message for parameter $param and function named $func.
 
 =item my @msgs = $validator->get_error_messages_from_param($param)
 
-Get error messages by $q for parameter $param.
+Get all the error messages by $q for the parameter $param.
 
 =back
 

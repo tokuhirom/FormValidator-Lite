@@ -36,10 +36,10 @@ __END__
 
 =head1 NAME
 
-FormValidator::Lite::Messages::ja - English language resource
+FormValidator::Lite::Messages::en - English language resource
 
 =head1 DESCRIPTION
 
-This module provides Japanese message set for L<FormValidator::Lite>.
+This module provides English message set for L<FormValidator::Lite>.
 
 

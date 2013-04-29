@@ -58,6 +58,18 @@ rule 'CHOICE' => sub {
     }
     return 0;
 };
+alias 'CHOICE' => 'IN';
+
+rule 'NOT_IN' => sub {
+    my @choices = @_==1 && ref$_[0]eq'ARRAY' ? @{$_[0]} : @_;
+
+    for my $c (@choices) {
+        if ($c eq $_) {
+            return 0;
+        }
+    }
+    return 1;
+};
 
 rule 'MATCH' => sub {
     my $callback = shift;
@@ -177,6 +189,18 @@ Synonym of REGEX.
     );
 
 The parameter is one of choice or not.
+
+=item IN
+
+Synonym of CHOICE.
+
+=item NOT_IN
+
+    $validator->check(
+        new_user => [[NOT_IN => \@existing_users]]
+    );
+
+The parameter does not belong to the list of values.
 
 =item MATCH
 

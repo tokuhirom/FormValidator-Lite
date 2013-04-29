@@ -11,7 +11,7 @@ use Class::Accessor::Lite 0.05 (
 );
 use Class::Load ();
 
-our $VERSION = '0.33';
+our $VERSION = '0.34';
 
 our $Rules;
 our $FileRules;
@@ -211,6 +211,10 @@ sub get_error_messages_from_param {
 1;
 
 __END__
+
+=encoding utf-8
+
+=for stopwords $param.$func
 
 =head1 NAME
 

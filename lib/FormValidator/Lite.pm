@@ -11,7 +11,7 @@ use Class::Accessor::Lite 0.05 (
 );
 use Class::Load ();
 
-our $VERSION = '0.32';
+our $VERSION = '0.33';
 
 our $Rules;
 our $FileRules;

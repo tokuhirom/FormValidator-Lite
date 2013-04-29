@@ -2,6 +2,13 @@ Revision history for Perl extension FormValidator::Lite
 
 {{$NEXT}}
 
+0.33 2013-04-29T23:21:49Z
+
+    - Fixed random test results on t/010_core/011_messages.t with bleadperl
+      https://rt.cpan.org/Ticket/Display.html?id=84910
+      (Reported by ANDK)
+
+
 0.32
 
     - Fixed sysnopsis

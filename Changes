@@ -1,5 +1,7 @@
 Revision history for Perl extension FormValidator::Lite
 
+{{$NEXT}}
+
 0.32
 
     - Fixed sysnopsis

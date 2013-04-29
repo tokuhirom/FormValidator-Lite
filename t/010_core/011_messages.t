@@ -7,8 +7,8 @@ use FormValidator::Lite::Messages::en;
 use FormValidator::Lite::Messages::ja;
 
 is_deeply(
-    [keys %$FormValidator::Lite::Messages::en::MESSAGES],
-    [keys %$FormValidator::Lite::Messages::ja::MESSAGES],
+    [sort keys %$FormValidator::Lite::Messages::en::MESSAGES],
+    [sort keys %$FormValidator::Lite::Messages::ja::MESSAGES],
     'translated'
 );
 

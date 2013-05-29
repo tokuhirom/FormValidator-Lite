@@ -23,9 +23,9 @@ my %args = (
         'Module::Build' => 0.38,
     },
 
-    no_index    => { 'directory' => [ 'inc' ] },
-    name        => 'FormValidator-Lite',
-    module_name => 'FormValidator::Lite',
+    name            => 'FormValidator-Lite',
+    module_name     => 'FormValidator::Lite',
+    allow_pure_perl => 0,
 
     script_files => [glob('script/*'), glob('bin/*')],
 

@@ -2,6 +2,12 @@ Revision history for Perl extension FormValidator::Lite
 
 {{$NEXT}}
 
+0.35 2013-05-29T20:21:01Z
+
+    - Added FormValidator::Lite::Constraint::Number.
+      It provides BETWEEN, LESS_EQUAL, MORE_THAN, MORE_EQUAL
+      (yowcow)
+
 0.34 2013-04-29T23:29:50Z
 
     - Documentation enhancements

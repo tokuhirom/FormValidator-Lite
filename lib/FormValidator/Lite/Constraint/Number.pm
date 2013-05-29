@@ -1,6 +1,5 @@
 package FormValidator::Lite::Constraint::Number;
 use strict;
-use utf8;
 use warnings;
 use FormValidator::Lite::Constraint;
 
@@ -25,7 +24,6 @@ rule MORE_EQUAL => sub {
 };
 
 1;
-
 __END__
 
 =head1 NAME

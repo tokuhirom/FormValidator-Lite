@@ -20,7 +20,13 @@ xshelper.h
 tags
 blib/
 MYMETA.*
-META.json
 README
 FormValidator-Lite-*/
 ^inc/
+/FormValidator-Lite-*
+/.build
+/_build_params
+/Build
+!Build/
+!META.json
+!LICENSE

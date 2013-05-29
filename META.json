@@ -1,0 +1,96 @@
+{
+   "abstract" : "lightweight form validation library",
+   "author" : [
+      "Tokuhiro Matsuno <tokuhirom AAJKLFJEF@ gmail.com>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Minilla/v0.0.56, CPAN::Meta::Converter version 2.130880",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "FormValidator-Lite",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "xt",
+         "inc",
+         "share",
+         "eg",
+         "examples",
+         "author"
+      ]
+   },
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "CPAN::Meta" : "0",
+            "CPAN::Meta::Prereqs" : "0",
+            "Module::Build" : "0.38"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Test::CPAN::Meta" : "0",
+            "Test::MinimumVersion" : "0.10108",
+            "Test::Pod" : "1.41",
+            "Test::Spellunker" : "v0.2.2"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "CGI" : "3.31",
+            "Class::Accessor::Lite" : "0.05",
+            "Class::Load" : "0.11",
+            "Email::Valid" : "0",
+            "Email::Valid::Loose" : "0",
+            "Filter::Util::Call" : "0",
+            "Scalar::Util" : "1.19",
+            "perl" : "5.008001"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::Base::Less" : "0",
+            "Test::More" : "0.98",
+            "Test::Requires" : "0.05",
+            "YAML" : "0"
+         },
+         "suggests" : {
+            "HTML::Shakan" : "0",
+            "HTTP::Engine::Request" : "0"
+         }
+      }
+   },
+   "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/tokuhirom/formvalidator-lite/issues"
+      },
+      "homepage" : "https://github.com/tokuhirom/formvalidator-lite",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/tokuhirom/formvalidator-lite.git",
+         "web" : "https://github.com/tokuhirom/formvalidator-lite"
+      }
+   },
+   "version" : "0.34",
+   "x_contributors" : [
+      "Kan Fushihara <kan@mobilefactory.jp>",
+      "fujiwara <fujiwara.shunichiro@gmail.com>",
+      "Keiji, Yoshimi <walf443@gmail.com>",
+      "bayashi <bayashi@cpan.org>",
+      "Daisuke Murase <typester@cpan.org>",
+      "Atsushi Kobayashi <nekokak@gmail.com>",
+      "Naoki Tomita <tomita@cpan.org>",
+      "Yoshihiro Sasaki <aloelight@gmail.com>",
+      "ysasaki <ysasaki@idac.co.jp>",
+      "yowcow <yowcow@gmail.com>",
+      "Geraud <geraud@genta.nealab.net>",
+      "Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>",
+      "tokuhirom <tokuhirom@gmail.com>"
+   ]
+}

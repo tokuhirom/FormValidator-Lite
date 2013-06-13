@@ -168,26 +168,26 @@ sub get_error_message {
     my $err_message  = $msg->{message}->{"${param}.${function}"};
     my $err_param    = $msg->{param}->{$param};
     my $err_function = $msg->{function}->{$function};
-
-    my $gen_msg = sub {
-        my ($tmpl, @args) = @_;
-        local $_ = $tmpl;
-        s!\[_(\d+)\]!$args[$1-1]!ge;
-        $_;
-    };
     
     if ($err_message) {
-        return $gen_msg->($err_message, $err_param);
+        return $self->build_message($err_message, $err_param);
     } elsif ($err_function && $err_param) {
-        return $gen_msg->($err_function, $err_param);
+        return $self->build_message($err_function, $err_param);
     } else {
         Carp::carp  "${param}.${function} is not defined in message file.";
         if ($msg->{default_tmpl}) {
-            return $gen_msg->($err_function || $msg->{default_tmpl}, $err_function || $param);
+            return $self->build_message($err_function || $msg->{default_tmpl}, $err_function || $param);
         } else {
             return '';
         }
     }
+}
+
+sub build_message {
+    my ($self, $tmpl, @args) = @_;
+    local $_ = $tmpl;
+    s!\[_(\d+)\]!$args[$1-1]!ge;
+    $_;
 }
 
 sub get_error_messages_from_param {
@@ -405,8 +405,12 @@ Set an error message for a given $param and $func pair.
     ...
 
 Set the error message map. In the 'function' and 'message' sections,
-C<< [_1] >> will be replaced with the description of the failing parameter
-provided in the 'param' section.
+C<< [_1] >> will be replaced by C<< build_message >> with the description of
+the failing parameter provided in the 'param' section.
+
+=item C<< $validator->build_message($tmpl, @args) >>
+
+replace [_1] in C<< $tmpl >> by C<< @args >>.
 
 Setup error message map.
 

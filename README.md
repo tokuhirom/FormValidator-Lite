@@ -190,8 +190,12 @@ specifications come from `@_`.
         ...
 
     Set the error message map. In the 'function' and 'message' sections,
-    `[_1]` will be replaced with the description of the failing parameter
-    provided in the 'param' section.
+    `[_1]` will be replaced by `build_message` with the description of
+    the failing parameter provided in the 'param' section.
+
+- `$validator->build_message($tmpl, @args)`
+
+    replace \[\_1\] in `$tmpl` by `@args`.
 
     Setup error message map.
 

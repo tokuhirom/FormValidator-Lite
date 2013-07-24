@@ -12,6 +12,7 @@ on test => sub {
     requires 'Test::More', '0.98';
     requires 'Test::Requires', '0.05';
     requires 'YAML';
+    recommends 'Hash::MultiValue';
     suggests 'HTTP::Engine::Request';
     suggests 'HTML::Shakan';
 };

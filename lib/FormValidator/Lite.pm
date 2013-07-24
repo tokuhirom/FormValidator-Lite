@@ -12,7 +12,7 @@ use Class::Accessor::Lite 0.05 (
 use Class::Load ();
 use FormValidator::Lite::Hash;
 
-our $VERSION = '0.36';
+our $VERSION = '0.37';
 
 our $Rules;
 our $FileRules;
@@ -28,6 +28,8 @@ sub new {
 
     if (ref $q eq 'HASH') {
         $q = FormValidator::Lite::Hash->new($q);
+    } elsif (UNIVERSAL::isa($q, 'Hash::MultiValue')) {
+        $q = FormValidator::Lite::Hash->new($q->flatten);
     }
     bless { query => $q, _error => {} }, $class;
 }

@@ -2,12 +2,13 @@ use strict;
 use warnings;
 use Test::More;
 use FormValidator::Lite;
+use Test::Requires 'Hash::MultiValue';
 use CGI;
 
 subtest 'simple' => sub {
-    my $q = {
+    my $q = Hash::MultiValue->new(
         foo => 'bar',
-    };
+    );
     my $v = FormValidator::Lite->new($q);
     ok(!$v->has_error);
     isa_ok($v->query, 'FormValidator::Lite::Hash');
@@ -38,11 +39,11 @@ subtest 'simple' => sub {
 };
 
 subtest 'multiple values' => sub {
-    my $v = FormValidator::Lite->new({
+    my $v = FormValidator::Lite->new(Hash::MultiValue->new(
         foo => ' 0 ',
         foo => ' 123 ',
         foo => ' 234 ',
-    });
+    ));
     ok(!$v->has_error);
     $v->check(
         foo => [[FILTER => 'trim'], 'INT'],

@@ -7,15 +7,21 @@ use Carp ();
 sub new {
     my $class = shift;
     my %args = @_==1 ? %{$_[0]} : @_;
-    bless {%args}, $class;
+    my $self = bless {}, $class;
+    while (my ($k, $v) = each %args) {
+        push @{$self->{$k}}, $v;
+    }
+    return $self;
 }
 
 sub param {
     my $self = shift;
     if (@_==1) {
-        return $self->{$_[0]};
-    } elsif (@_==2) {
-        return $self->{$_[0]} = $_[1];
+        if (wantarray) {
+            return @{$self->{$_[0]}};
+        } else {
+            return $self->{$_[0]}->[0];
+        }
     } elsif (@_==0) {
         return keys %$self;
     } else {

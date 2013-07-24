@@ -53,6 +53,9 @@
          }
       },
       "test" : {
+         "recommends" : {
+            "Hash::MultiValue" : "0"
+         },
          "requires" : {
             "Test::Base::Less" : "0",
             "Test::More" : "0.98",
@@ -77,7 +80,7 @@
          "web" : "https://github.com/tokuhirom/FormValidator-Lite"
       }
    },
-   "version" : "0.36",
+   "version" : "0.37",
    "x_contributors" : [
       "Kan Fushihara <kan@mobilefactory.jp>",
       "fujiwara <fujiwara.shunichiro@gmail.com>",

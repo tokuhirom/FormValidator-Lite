@@ -2,6 +2,11 @@ Revision history for Perl extension FormValidator::Lite
 
 {{$NEXT}}
 
+0.37 2013-07-24T03:06:02Z
+
+    - You can use Hashref and Hash::MultiValue as query parameter.
+      (tokuhirom)
+
 0.36 2013-06-13T07:44:20Z
 
     - pull-up build_message as public method

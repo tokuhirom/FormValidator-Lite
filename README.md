@@ -85,6 +85,8 @@ specifications come from `@_`.
     object such as Apache::Request, CGI.pm, Plack::Request. The object MUST have
     a `$q->param` method.
 
+    __EXPERIMENTAL: __ You can pass the hash value for `$q`.
+
 - $validator->query()
 - $validator->query($query)
 

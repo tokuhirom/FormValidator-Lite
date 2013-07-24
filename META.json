@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno <tokuhirom AAJKLFJEF@ gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.4.9, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Minilla/v0.5.5, CPAN::Meta::Converter version 2.130880",
    "license" : [
       "perl_5"
    ],
@@ -92,6 +92,6 @@
       "Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>",
       "yowcow <yowcow@gmail.com>",
       "soh335 <sugarbabe335@gmail.com>",
-      "Tokuhiro Matsuno <tokuhirom@gmail.com>"
+      "tokuhirom <tokuhirom@gmail.com>"
    ]
 }

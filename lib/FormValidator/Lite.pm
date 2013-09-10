@@ -130,7 +130,7 @@ sub set_param_message {
 
 sub set_message_data {
     my ($self, $msg) = @_;
-    for my $key (qw/message param function/) {
+    for my $key (qw/param function/) {
         Carp::croak("missing key $key") unless $msg->{$key};
     }
     $self->{_msg} = $msg;

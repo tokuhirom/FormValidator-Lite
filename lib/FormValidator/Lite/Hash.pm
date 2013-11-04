@@ -8,6 +8,7 @@ sub new {
     my $class = shift;
     my @args = @_==1 ? %{$_[0]} : @_;
     my $self = bless {}, $class;
+    # for Hash::MultiValue hash
     while (my ($k, $v) = splice @args, 0, 2) {
         push @{$self->{$k}}, $v;
     }

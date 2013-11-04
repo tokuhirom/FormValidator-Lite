@@ -6,9 +6,9 @@ use Carp ();
 
 sub new {
     my $class = shift;
-    my %args = @_==1 ? %{$_[0]} : @_;
+    my @args = @_==1 ? %{$_[0]} : @_;
     my $self = bless {}, $class;
-    while (my ($k, $v) = each %args) {
+    while (my ($k, $v) = splice @args, 0, 2) {
         push @{$self->{$k}}, $v;
     }
     return $self;

@@ -36,26 +36,18 @@ sub new {
 
 sub check {
     my ($self, @rule_ary) = @_;
-    Carp::croak("this is instance method") unless ref $self;
+    Carp::croak("this is an instance method") unless ref $self;
 
-    my $q = $self->{query};
-    while (my ($key, $rules) = splice(@rule_ary, 0, 2)) {
-        my @values;
-        if (ref $key) {
-            $key = [%$key];
-            @values = [ map { $q->param($_) } @{ $key->[1] } ];
-            $key = $key->[0];
-        } else {
-            @values = defined $q->param($key) ? $q->param($key) : undef;
-        }
+    while (my ($rule_key, $rules) = splice(@rule_ary, 0, 2)) {
+        my ($key, @values) = $self->_extract_values($rule_key);
         for my $value (@values) {
             local $_ = $value;
             for my $rule (@$rules) {
-                my $rule_name = ref($rule) ? $rule->[0]                        : $rule;
+                my $rule_name = ref($rule) ? $rule->[0]                          : $rule;
                 my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];
 
                 if ($FileRules->{$rule_name}) {
-                    $_ = FormValidator::Lite::Upload->new($q, $key);
+                    $_ = FormValidator::Lite::Upload->new($self->{query}, $key);
                 }
                 my $is_ok = do {
                     if ((not (defined $_ && length $_)) && $rule_name !~ /^(NOT_NULL|NOT_BLANK|REQUIRED)$/) {
@@ -77,6 +69,22 @@ sub check {
     }
 
     return $self;
+}
+
+sub _extract_values {
+    my ($self, $key) = @_;
+
+    local $CGI::LIST_CONTEXT_WARN = 0;
+    my $q = $self->{query};
+    my @values;
+    if (ref $key) {
+        $key = [%$key];
+        @values = [ map { $q->param($_) } @{ $key->[1] } ];
+        $key = $key->[0];
+    } else {
+        @values = defined $q->param($key) ? $q->param($key) : undef;
+    }
+    return ($key, @values);
 }
 
 sub is_error {

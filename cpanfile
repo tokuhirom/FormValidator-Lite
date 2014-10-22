@@ -1,4 +1,4 @@
-requires 'CGI', '3.31';
+requires 'CGI', '3.31,!=4.05,!=4.06,!=4.07,!=4.08';
 requires 'Class::Accessor::Lite', '0.05';
 requires 'Class::Load', '0.11';
 requires 'Email::Valid';

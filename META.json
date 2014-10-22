@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno <tokuhirom AAJKLFJEF@ gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.5.5, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Minilla/v2.2.0, CPAN::Meta::Converter version 2.141520",
    "license" : [
       "perl_5"
    ],
@@ -21,28 +21,28 @@
          "share",
          "eg",
          "examples",
-         "author"
+         "author",
+         "builder"
       ]
    },
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "CPAN::Meta" : "0",
-            "CPAN::Meta::Prereqs" : "0",
             "Module::Build" : "0.38"
          }
       },
       "develop" : {
          "requires" : {
             "Test::CPAN::Meta" : "0",
-            "Test::MinimumVersion" : "0.10108",
+            "Test::MinimumVersion::Fast" : "0.04",
+            "Test::PAUSE::Permissions" : "0.04",
             "Test::Pod" : "1.41",
             "Test::Spellunker" : "v0.2.7"
          }
       },
       "runtime" : {
          "requires" : {
-            "CGI" : "3.31",
+            "CGI" : ">= 3.31, != 4.05, != 4.06, != 4.07, != 4.08",
             "Class::Accessor::Lite" : "0.05",
             "Class::Load" : "0.11",
             "Email::Valid" : "0",
@@ -80,7 +80,7 @@
          "web" : "https://github.com/tokuhirom/FormValidator-Lite"
       }
    },
-   "version" : "0.37",
+   "version" : "0.38",
    "x_contributors" : [
       "Kan Fushihara <kan@mobilefactory.jp>",
       "fujiwara <fujiwara.shunichiro@gmail.com>",
@@ -95,6 +95,9 @@
       "Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>",
       "yowcow <yowcow@gmail.com>",
       "soh335 <sugarbabe335@gmail.com>",
-      "tokuhirom <tokuhirom@gmail.com>"
+      "dayflower <daydream.trippers@gmail.com>",
+      "magai <xxmagai@gmail.com>",
+      "Géraud CONTINSOUZAS <geraud@gcu.info>",
+      "Tokuhiro Matsuno <tokuhirom@gmail.com>"
    ]
 }

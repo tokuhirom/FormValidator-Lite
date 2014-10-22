@@ -45,26 +45,22 @@ Create your own constraint package as such :
     use warnings;
     use FormValidator::Lite::Constraint;
     
-
     rule 'IS_EVEN' => sub {
         return $_ % 2 ? 0 : 1;
     };
     
-
     rule 'IS_GREATER_THAN' => sub {
         my ($min) = @_;
         return $_ >= $min;
     }
     alias 'IS_GREATER_THAN' => 'IS_BIGGER_THAN';
     
-
     1;
 
 And in your controller :
 
     use FormValidator::Lite qw("+MyApp::Validator::Constraint");
     
-
     my $validator = FormValidator::Lite->new(...);
     $validator->set_message_data(...);
     $validator->check(
@@ -85,7 +81,7 @@ specifications come from `@_`.
     object such as Apache::Request, CGI.pm, Plack::Request. The object MUST have
     a `$q->param` method.
 
-    __EXPERIMENTAL: __ You can pass the hash value for `$q`.
+    **EXPERIMENTAL: ** You can pass the hash value for `$q`.
 
 - $validator->query()
 - $validator->query($query)
@@ -134,7 +130,6 @@ specifications come from `@_`.
 
     Return all the errors as a hash reference where the keys are the parameters
     and the values are a hash reference with the failing constraints.
-        
 
         {
             'foo' => { 'NOT_NULL' => 1, 'INT' => 1 },
@@ -160,11 +155,10 @@ specifications come from `@_`.
 
     Load function message file.
 
-    Currently, [FormValidator::Lite::Messages::ja](http://search.cpan.org/perldoc?FormValidator::Lite::Messages::ja) and
-    [FormValidator::Lite::Messages::en](http://search.cpan.org/perldoc?FormValidator::Lite::Messages::en) are available.
+    Currently, [FormValidator::Lite::Messages::ja](https://metacpan.org/pod/FormValidator::Lite::Messages::ja) and
+    [FormValidator::Lite::Messages::en](https://metacpan.org/pod/FormValidator::Lite::Messages::en) are available.
 
 - $validator->set\_param\_message($param => $message, ...)
-    
 
         $validator->set_param_message(
             name => 'Your Name',
@@ -251,7 +245,7 @@ tomi-ru
 
 # SEE ALSO
 
-[FormValidator::Simple](http://search.cpan.org/perldoc?FormValidator::Simple), [Data::FormValidator](http://search.cpan.org/perldoc?Data::FormValidator), [HTML::FormFu](http://search.cpan.org/perldoc?HTML::FormFu)
+[FormValidator::Simple](https://metacpan.org/pod/FormValidator::Simple), [Data::FormValidator](https://metacpan.org/pod/Data::FormValidator), [HTML::FormFu](https://metacpan.org/pod/HTML::FormFu)
 
 # LICENSE
 

@@ -12,7 +12,7 @@ use Class::Accessor::Lite 0.05 (
 use Class::Load ();
 use FormValidator::Lite::Hash;
 
-our $VERSION = '0.37';
+our $VERSION = '0.38';
 
 our $Rules;
 our $FileRules;

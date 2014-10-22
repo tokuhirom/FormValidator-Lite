@@ -2,6 +2,44 @@ Revision history for Perl extension FormValidator::Lite
 
 {{$NEXT}}
 
+0.38 2014-10-22T01:06:41Z
+
+    commit 5703d0de3a630688db80bf05914f5f045d412dd2
+    Author: Géraud CONTINSOUZAS <geraud@gcu.info>
+    Date:   Wed Oct 22 10:27:44 2014 +1100
+
+        Block CGI.pm from 4.05 to 4.08
+        
+        They are known to cause problems with multi upload files.
+
+    commit 393766000df65ea9934e2fa691460b0690ed4214
+    Author: Géraud CONTINSOUZAS <geraud@gcu.info>
+    Date:   Wed Oct 22 09:32:57 2014 +1100
+
+        FV::Lite : extract values retrieval logic
+        
+        Since v4.05, CGI.pm get noisy when calling the param() method in list
+        context. For now isolate calling this method on its own, and locally
+        silence those warnings.
+
+    commit 50587b1715fd16cf18982ffc3a1ecc0d042e2e7d
+    Author: magai <xxmagai@gmail.com>
+    Date:   Mon Nov 4 21:38:24 2013 +0900
+
+        Use param() instead of accessing as hash for get parameters
+
+    commit f642d50e638ae00f99b07a3c1a9b41ecbf9f4864
+    Author: magai <xxmagai@gmail.com>
+    Date:   Mon Nov 4 18:53:39 2013 +0900
+
+        Fix Hash::MultiValue hash handling
+
+    commit 061e801b9db211d0edae825c4903281026ce260e
+    Author: dayflower <daydream.trippers@gmail.com>
+    Date:   Mon Sep 9 22:04:48 2013 +0900
+
+        Make 'message' parameter for set_message_data() optional.
+
 0.37 2013-07-24T03:06:02Z
 
     - You can use Hashref and Hash::MultiValue as query parameter.

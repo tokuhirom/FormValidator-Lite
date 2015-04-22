@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use FormValidator::Lite::ParameterExtraction;
-use Test::More tests => 2;
+use Test::More tests => 3;
 use Test::Requires qw(
     Dancer::Request
     HTTP::Request::Common
@@ -9,7 +9,7 @@ use Test::Requires qw(
 );
 
 {
-    my $req = POST 'http://hoge/?hoge=ho&hoge=ge',
+    my $req = POST 'http://hoge/',
         Content => {
         foo => 'foooo',
         bar => [ 'b', 'a', 'r' ],
@@ -19,4 +19,5 @@ use Test::Requires qw(
 
     is_deeply [$cb->($q, 'foo')], ['foooo'];
     is_deeply [$cb->($q, 'bar')], [qw( b a r )];
+    is_deeply [$cb->($q, 'hoge')], [undef];
 }

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use FormValidator::Lite::ParameterExtraction;
-use Test::More tests => 2;
+use Test::More tests => 3;
 use Test::Requires qw(
     HTTP::Request::Common
     HTTP::Message::PSGI
@@ -19,4 +19,5 @@ use Test::Requires qw(
 
     is_deeply [$cb->($q, 'foo')], ['foooo'];
     is_deeply [$cb->($q, 'bar')], [qw( b a r )];
+    is_deeply [$cb->($q, 'hoge')], [undef];
 }

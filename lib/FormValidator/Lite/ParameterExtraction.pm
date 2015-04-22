@@ -13,12 +13,14 @@ sub determine_callback {
 
 sub cgi_params {
     my ($q, $key) = @_;
-    $q->multi_param($key);
+    my @val = $q->multi_param($key);
+    @val ? @val : undef;
 }
 
 sub mojo_request_params {
     my ($q, $key) = @_;
-    @{ $q->every_param($key) };
+    my $val = $q->every_param($key);
+    @$val ? @$val : undef;
 }
 
 sub dancer_request_params {
@@ -29,8 +31,8 @@ sub dancer_request_params {
 
 sub generic_request_params {
     my ($q, $key) = @_;
-    my @values = $q->param($key);
-    @values;
+    my @val = $q->param($key);
+    @val ? @val : undef;
 }
 
 1;

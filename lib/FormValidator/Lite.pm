@@ -311,7 +311,7 @@ specifications come from C<< @_ >>.
 
 =over 4
 
-=item my $validator = FormValidator::Lite->new($q);
+=item my $validator = FormValidator::Lite->new($q, $cb);
 
 Create a new instance.
 
@@ -319,7 +319,13 @@ The constructor takes a mandatory argument C<< $q >> that is a query-like
 object such as Apache::Request, CGI.pm, Plack::Request. The object MUST have
 a C<< $q->param >> method.
 
-B<EXPERIMENTAL: > You can pass the hash value for C<< $q >>.
+B<EXPERIMENTAL: > You can pass a hash value for C<< $q >>.
+
+B<EXPERIMENTAL: > You can pass an optional callback function to retrieve values,
+in list context, from the mandatory query-like object.
+Some of popular objects, like CGI.pm, Plack::Request, and such, are supported
+by default.
+Refer to L<FormValidator::Lite::ValueExtraction> for details.
 
 =item $validator->query()
 

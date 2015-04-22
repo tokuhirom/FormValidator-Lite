@@ -31,8 +31,7 @@ sub dancer_request_params {
 
 sub generic_request_params {
     my ($q, $key) = @_;
-    my @val = $q->param($key);
-    @val ? @val : undef;
+    defined $q->param($key) ? $q->param($key) : undef;
 }
 
 1;

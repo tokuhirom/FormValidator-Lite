@@ -5,6 +5,7 @@ use 5.008_001;
 use Carp ();
 use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
+use FormValidator::Lite::ParameterExtraction;
 use FormValidator::Lite::Upload;
 use Class::Accessor::Lite 0.05 (
     rw => [qw/query/]
@@ -23,7 +24,7 @@ sub import {
 }
 
 sub new {
-    my ($class, $q) = @_;
+    my ($class, $q, $cb) = @_;
     Carp::croak("Usage: ${class}->new(\$q)") unless $q;
 
     if (ref $q eq 'HASH') {
@@ -31,7 +32,10 @@ sub new {
     } elsif (UNIVERSAL::isa($q, 'Hash::MultiValue')) {
         $q = FormValidator::Lite::Hash->new($q->flatten);
     }
-    bless { query => $q, _error => {} }, $class;
+
+    $cb ||= FormValidator::Lite::ParameterExtraction::determine_callback($q);
+
+    bless { query => $q, _error => {}, _cb => $cb }, $class;
 }
 
 sub check {
@@ -74,15 +78,15 @@ sub check {
 sub _extract_values {
     my ($self, $key) = @_;
 
-    local $CGI::LIST_CONTEXT_WARN = 0;
     my $q = $self->{query};
+    my $cb = $self->{_cb};
     my @values;
     if (ref $key) {
         $key = [%$key];
-        @values = [ map { $q->param($_) } @{ $key->[1] } ];
+        @values = [ grep { $_ } map { $cb->($q, $_) } @{ $key->[1] } ];
         $key = $key->[0];
     } else {
-        @values = defined $q->param($key) ? $q->param($key) : undef;
+        @values = $cb->($q, $key);
     }
     return ($key, @values);
 }

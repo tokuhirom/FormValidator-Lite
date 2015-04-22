@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use FormValidator::Lite::ParameterExtraction;
+use FormValidator::Lite::ValueExtraction;
 use Test::More tests => 2;
 use Test::Requires qw(
     Amon2
@@ -29,7 +29,7 @@ use Test::Requires qw(
         bar => [ 'b', 'a', 'r' ],
         };
     my $q = Amon2::Web::Request->new($req->to_psgi, $c);
-    my $cb = FormValidator::Lite::ParameterExtraction::determine_callback($q);
+    my $cb = FormValidator::Lite::ValueExtraction::determine_callback($q);
 
     is_deeply [$cb->($q, 'foo')], ['foooo'];
     is_deeply [$cb->($q, 'bar')], [qw( b a r )];

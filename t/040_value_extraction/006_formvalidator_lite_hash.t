@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use FormValidator::Lite::Hash;
-use FormValidator::Lite::ParameterExtraction;
+use FormValidator::Lite::ValueExtraction;
 use Hash::MultiValue;
 use Test::More tests => 3;
 
@@ -14,7 +14,7 @@ use Test::More tests => 3;
             bar => 'r',
         )->flatten,
     );
-    my $cb = FormValidator::Lite::ParameterExtraction::determine_callback($q);
+    my $cb = FormValidator::Lite::ValueExtraction::determine_callback($q);
 
     is_deeply [$cb->($q, 'foo')], ['foooo'];
     is_deeply [$cb->($q, 'bar')], [qw( b a r )];

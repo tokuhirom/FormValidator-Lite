@@ -5,7 +5,7 @@ use 5.008_001;
 use Carp ();
 use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
-use FormValidator::Lite::ParameterExtraction;
+use FormValidator::Lite::ValueExtraction;
 use FormValidator::Lite::Upload;
 use Class::Accessor::Lite 0.05 (
     rw => [qw/query/]
@@ -33,7 +33,7 @@ sub new {
         $q = FormValidator::Lite::Hash->new($q->flatten);
     }
 
-    $cb ||= FormValidator::Lite::ParameterExtraction::determine_callback($q);
+    $cb ||= FormValidator::Lite::ValueExtraction::determine_callback($q);
 
     bless { query => $q, _error => {}, _cb => $cb }, $class;
 }

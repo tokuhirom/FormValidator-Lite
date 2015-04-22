@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use FormValidator::Lite::ParameterExtraction;
+use FormValidator::Lite::ValueExtraction;
 use Test::More tests => 3;
 use CGI;
 
@@ -11,7 +11,7 @@ use CGI;
             bar => ['b', 'a', 'r'],
         },
     );
-    my $cb = FormValidator::Lite::ParameterExtraction::determine_callback($q);
+    my $cb = FormValidator::Lite::ValueExtraction::determine_callback($q);
 
     is_deeply [$cb->($q, 'foo')], ['foooo'];
     is_deeply [$cb->($q, 'bar')], [qw( b a r )];

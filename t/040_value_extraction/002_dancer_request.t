@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use FormValidator::Lite::ParameterExtraction;
+use FormValidator::Lite::ValueExtraction;
 use Test::More tests => 3;
 use Test::Requires qw(
     Dancer::Request
@@ -15,7 +15,7 @@ use Test::Requires qw(
         bar => [ 'b', 'a', 'r' ],
         };
     my $q = Dancer::Request->new(env => $req->to_psgi);
-    my $cb = FormValidator::Lite::ParameterExtraction::determine_callback($q);
+    my $cb = FormValidator::Lite::ValueExtraction::determine_callback($q);
 
     is_deeply [$cb->($q, 'foo')], ['foooo'];
     is_deeply [$cb->($q, 'bar')], [qw( b a r )];

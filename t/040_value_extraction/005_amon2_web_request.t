@@ -23,7 +23,7 @@ use Test::Requires qw(
 
 {
     my $c = MyApp::Web->bootstrap;
-    my $req = POST 'http://hoge/?hoge=ho&hoge=ge',
+    my $req = POST 'http://hoge/',
         Content => {
         foo => 'foooo',
         bar => [ 'b', 'a', 'r' ],

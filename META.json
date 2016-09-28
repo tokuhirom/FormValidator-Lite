@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno <tokuhirom AAJKLFJEF@ gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v2.2.0, CPAN::Meta::Converter version 2.141520",
+   "generated_by" : "Minilla/v3.0.2, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
@@ -28,7 +28,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.38"
+            "Module::Build::Tiny" : "0.035"
          }
       },
       "develop" : {
@@ -80,7 +80,7 @@
          "web" : "https://github.com/tokuhirom/FormValidator-Lite"
       }
    },
-   "version" : "0.38",
+   "version" : "0.39",
    "x_contributors" : [
       "Kan Fushihara <kan@mobilefactory.jp>",
       "fujiwara <fujiwara.shunichiro@gmail.com>",
@@ -98,6 +98,8 @@
       "dayflower <daydream.trippers@gmail.com>",
       "magai <xxmagai@gmail.com>",
       "Géraud CONTINSOUZAS <geraud@gcu.info>",
+      "Syohei YOSHIDA <shohei.yoshida@dena.com>",
       "Tokuhiro Matsuno <tokuhirom@gmail.com>"
-   ]
+   ],
+   "x_serialization_backend" : "JSON::PP version 2.27300"
 }

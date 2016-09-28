@@ -2,6 +2,10 @@ Revision history for Perl extension FormValidator::Lite
 
 {{$NEXT}}
 
+0.39 2016-09-28T13:51:12Z
+
+    - fixed test case(syohex)
+
 0.38 2014-10-22T01:06:41Z
 
     commit 5703d0de3a630688db80bf05914f5f045d412dd2

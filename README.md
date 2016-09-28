@@ -233,7 +233,7 @@ FormValidator::Lite is fast!
 
 # AUTHOR
 
-Tokuhiro Matsuno <tokuhirom AAJKLFJEF@ gmail.com>
+Tokuhiro Matsuno &lt;tokuhirom AAJKLFJEF@ gmail.com>
 
 # THANKS TO
 

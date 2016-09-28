@@ -13,7 +13,7 @@ use Test::Requires 'Plack::Request';
     'HTTP_CONNECTION'   => 'TE, close',
     'REQUEST_METHOD'    => 'POST',
     'SCRIPT_URI'        => 'http://www.perl.org/test.cgi',
-    'CONTENT_LENGTH'    => 3458,
+    'CONTENT_LENGTH'    => 3457,
     'SCRIPT_FILENAME'   => '/home/usr/test.cgi',
     'SERVER_SOFTWARE'   => 'Apache/1.3.27 (Unix) ',
     'HTTP_TE'           => 'deflate,gzip;q=0.3',

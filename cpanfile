@@ -13,6 +13,12 @@ on test => sub {
     requires 'Test::Requires', '0.05';
     requires 'YAML';
     recommends 'Hash::MultiValue';
-    suggests 'HTTP::Engine::Request';
+    suggests 'Amon2::Web::Request';
+    suggests 'Dancer::Request';
     suggests 'HTML::Shakan';
+    suggests 'HTTP::Engine::Request';
+    suggests 'HTTP::Message::PSGI';
+    suggests 'HTTP::Request::Common';
+    suggests 'Mojo::Message::Request';
+    suggests 'Plack::Request';
 };

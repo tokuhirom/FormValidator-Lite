@@ -384,6 +384,8 @@ You can also load the constraints during import :
 
 Load constraint components named C<< "FormValidator::Lite::Constraint::${name}" >>.
 
+By default, You can use only constraints defined by L<FormValidator::Lite::Constraint::Default>.
+
 =item $validator->load_function_message($lang)
 
     $validator->load_function_message('ja');

@@ -2,6 +2,11 @@ Revision history for Perl extension FormValidator::Lite
 
 {{$NEXT}}
 
+0.40 2018-07-27T15:05:50Z
+
+    - make CGI.pm a test-phase dependency.
+      (gugod)
+
 0.39 2016-09-28T13:51:12Z
 
     - fixed test case(syohex)

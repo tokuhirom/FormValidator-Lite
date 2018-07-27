@@ -149,6 +149,8 @@ specifications come from `@_`.
 
     Load constraint components named `"FormValidator::Lite::Constraint::${name}"`.
 
+    By default, You can use only constraints defined by [FormValidator::Lite::Constraint::Default](https://metacpan.org/pod/FormValidator::Lite::Constraint::Default).
+
 - $validator->load\_function\_message($lang)
 
         $validator->load_function_message('ja');

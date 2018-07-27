@@ -74,7 +74,7 @@ sub check {
 sub _extract_values {
     my ($self, $key) = @_;
 
-    local $CGI::LIST_CONTEXT_WARN = 0;
+    local $CGI::LIST_CONTEXT_WARN = 0 if %CGI::;
     my $q = $self->{query};
     my @values;
     if (ref $key) {

@@ -103,6 +103,8 @@ rule 'FILTER' => sub {
     1; # always return true
 };
 
+rule 'FLAG' => sub { $_ =~ /^[01]$/ };
+
 1;
 __END__
 

@@ -261,3 +261,20 @@ __END__
     foo => 0,
     bar => 0,
 )
+
+=== FLAG
+--- query: { z1 => 0, z2 => 1, z3 => 2, z4 => 'foo' }
+--- rule
+(
+    z1 => [qw/FLAG/],
+    z2 => [qw/FLAG/],
+    z3 => [qw/FLAG/],
+    z4 => [qw/FLAG/],
+)
+--- expected
+(
+    z1 => 0,
+    z2 => 0,
+    z3 => 1,
+    z4 => 1,
+)

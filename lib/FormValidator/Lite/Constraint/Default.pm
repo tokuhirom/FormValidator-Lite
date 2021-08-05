@@ -103,6 +103,8 @@ rule 'FILTER' => sub {
     1; # always return true
 };
 
+rule 'FLAG' => sub { $_ =~ /^[01]$/ };
+
 1;
 __END__
 
@@ -224,6 +226,14 @@ should return true/false.
 FILTER is special constraint. It does not check the value and simply filter.
 "trim" is only pre-defined. You can also pass a callback.
 Callback takes parameter as first argument, should return filtered value.
+
+=item FLAG
+
+    $validator->check(
+        is_enabled => [qw/FLAG/]
+    );
+
+Check parameter is 0 or 1.
 
 =back
 

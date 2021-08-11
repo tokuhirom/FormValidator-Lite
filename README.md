@@ -1,3 +1,4 @@
+[![Actions Status](https://github.com/tokuhirom/FormValidator-Lite/workflows/CI/badge.svg)](https://github.com/tokuhirom/FormValidator-Lite/actions)
 # NAME
 
 FormValidator::Lite - lightweight form validation library
@@ -149,7 +150,7 @@ specifications come from `@_`.
 
     Load constraint components named `"FormValidator::Lite::Constraint::${name}"`.
 
-    By default, You can use only constraints defined by [FormValidator::Lite::Constraint::Default](https://metacpan.org/pod/FormValidator::Lite::Constraint::Default).
+    By default, You can use only constraints defined by [FormValidator::Lite::Constraint::Default](https://metacpan.org/pod/FormValidator%3A%3ALite%3A%3AConstraint%3A%3ADefault).
 
 - $validator->load\_function\_message($lang)
 
@@ -157,8 +158,8 @@ specifications come from `@_`.
 
     Load function message file.
 
-    Currently, [FormValidator::Lite::Messages::ja](https://metacpan.org/pod/FormValidator::Lite::Messages::ja) and
-    [FormValidator::Lite::Messages::en](https://metacpan.org/pod/FormValidator::Lite::Messages::en) are available.
+    Currently, [FormValidator::Lite::Messages::ja](https://metacpan.org/pod/FormValidator%3A%3ALite%3A%3AMessages%3A%3Aja) and
+    [FormValidator::Lite::Messages::en](https://metacpan.org/pod/FormValidator%3A%3ALite%3A%3AMessages%3A%3Aen) are available.
 
 - $validator->set\_param\_message($param => $message, ...)
 
@@ -247,7 +248,7 @@ tomi-ru
 
 # SEE ALSO
 
-[FormValidator::Simple](https://metacpan.org/pod/FormValidator::Simple), [Data::FormValidator](https://metacpan.org/pod/Data::FormValidator), [HTML::FormFu](https://metacpan.org/pod/HTML::FormFu)
+[FormValidator::Simple](https://metacpan.org/pod/FormValidator%3A%3ASimple), [Data::FormValidator](https://metacpan.org/pod/Data%3A%3AFormValidator), [HTML::FormFu](https://metacpan.org/pod/HTML%3A%3AFormFu)
 
 # LICENSE
 

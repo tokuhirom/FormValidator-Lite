@@ -4,13 +4,13 @@
       "Tokuhiro Matsuno <tokuhirom AAJKLFJEF@ gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.0.9, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.1.12, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "FormValidator-Lite",
    "no_index" : {
@@ -35,7 +35,7 @@
          "requires" : {
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion::Fast" : "0.04",
-            "Test::PAUSE::Permissions" : "0.04",
+            "Test::PAUSE::Permissions" : "0.07",
             "Test::Pod" : "1.41",
             "Test::Spellunker" : "v0.2.7"
          }
@@ -82,26 +82,29 @@
    },
    "version" : "0.40",
    "x_contributors" : [
-      "Kan Fushihara <kan@mobilefactory.jp>",
-      "fujiwara <fujiwara.shunichiro@gmail.com>",
-      "Keiji, Yoshimi <walf443@gmail.com>",
-      "bayashi <bayashi@cpan.org>",
-      "Daisuke Murase <typester@cpan.org>",
       "Atsushi Kobayashi <nekokak@gmail.com>",
-      "Naoki Tomita <tomita@cpan.org>",
-      "Yoshihiro Sasaki <aloelight@gmail.com>",
-      "ysasaki <ysasaki@idac.co.jp>",
+      "Daisuke Murase <typester@cpan.org>",
       "Geraud <geraud@genta.nealab.net>",
       "Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>",
-      "yowcow <yowcow@gmail.com>",
-      "soh335 <sugarbabe335@gmail.com>",
-      "dayflower <daydream.trippers@gmail.com>",
-      "magai <xxmagai@gmail.com>",
       "Géraud CONTINSOUZAS <geraud@gcu.info>",
-      "Syohei YOSHIDA <shohei.yoshida@dena.com>",
-      "oddmutou <n@o625.com>",
+      "Kan Fushihara <kan@mobilefactory.jp>",
       "Kang-min Liu <gugod@gugod.org>",
-      "Tokuhiro Matsuno <tokuhirom@gmail.com>"
+      "Keiji, Yoshimi <walf443@gmail.com>",
+      "Naoki Tomita <tomita@cpan.org>",
+      "Shohei YOSHIDA <syohex@gmail.com>",
+      "Syohei YOSHIDA <shohei.yoshida@dena.com>",
+      "Tokuhiro Matsuno <tokuhirom@gmail.com>",
+      "Toshihiro Sugimoto <toshihiro0412@gmail.com>",
+      "Yoshihiro Sasaki <aloelight@gmail.com>",
+      "bayashi <bayashi@cpan.org>",
+      "dayflower <daydream.trippers@gmail.com>",
+      "fujiwara <fujiwara.shunichiro@gmail.com>",
+      "magai <xxmagai@gmail.com>",
+      "oddmutou <n@o625.com>",
+      "soh335 <sugarbabe335@gmail.com>",
+      "yowcow <yowcow@gmail.com>",
+      "ysasaki <ysasaki@idac.co.jp>"
    ],
-   "x_serialization_backend" : "JSON::PP version 2.27400"
+   "x_serialization_backend" : "JSON::PP version 4.06",
+   "x_static_install" : 1
 }

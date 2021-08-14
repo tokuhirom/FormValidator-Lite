@@ -80,7 +80,7 @@
          "web" : "https://github.com/tokuhirom/FormValidator-Lite"
       }
    },
-   "version" : "0.40",
+   "version" : "0.41",
    "x_contributors" : [
       "Atsushi Kobayashi <nekokak@gmail.com>",
       "Daisuke Murase <typester@cpan.org>",

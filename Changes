@@ -2,6 +2,10 @@ Revision history for Perl extension FormValidator::Lite
 
 {{$NEXT}}
 
+0.41 2021-08-14T12:06:08Z
+
+    - Add 'flag' rule(toshisugimo)
+
 0.40 2018-07-27T15:05:50Z
 
     - make CGI.pm a test-phase dependency.
